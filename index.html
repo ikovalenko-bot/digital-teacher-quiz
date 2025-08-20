@@ -626,7 +626,15 @@
 
         // Global variables provided by the environment
         const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
-        const firebaseConfig = JSON.parse(typeof __firebase_config !== 'undefined' ? __firebase_config : '{}');
+        const firebaseConfig = {
+  apiKey: "AIzaSyD86f9CcQYTZbZGGV3mx0rrZ_okVa3uPCI",
+  authDomain: "teacher-profile-quiz-data.firebaseapp.com",
+  projectId: "teacher-profile-quiz-data",
+  storageBucket: "teacher-profile-quiz-data.firebasestorage.app",
+  messagingSenderId: "915916470437",
+  appId: "1:915916470437:web:5f79b6a491ec208f08f54c",
+  measurementId: "G-LYNH4NQ8WP"
+};
 
         // Firebase App and Services initialization
         const app = initializeApp(firebaseConfig);
@@ -930,3 +938,4 @@
     </script>
 </body>
 </html>
+
