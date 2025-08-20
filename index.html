@@ -627,7 +627,7 @@
     <script>
         // Глобальні змінні (заповніть ВАШИМИ ДАНИМИ З FIREBASE CONSOLE)
         const firebaseConfig = {
-            apiKey: "AIzaSyD_Bup-l5om_iKApapwK2heV7nPSad_aqQ",
+            apiKey: "AIzaSyD_Bup-l5om_iKApapwK2heV7nPSad_aqQ, // <-- ПЕРЕКОНАЙТЕСЬ, ЩО ЦЕ ВАШ АКТУАЛЬНИЙ КЛЮЧ
             authDomain: "teacher-profile-quiz-data.firebaseapp.com",
             projectId: "teacher-profile-quiz-data",
             storageBucket: "teacher-profile-quiz-data.firebasestorage.app",
@@ -842,7 +842,7 @@
                         quizResults.lowestRole = role;
                     }
                     if (score > quizResults.highestScore) {
-                        quizResults.highestScore = score; // Corrected this line
+                        quizResults.highestScore = score; 
                         quizResults.highestRole = role;
                     }
                 }
@@ -913,7 +913,7 @@
             let chatHistory = [];
             chatHistory.push({ role: "user", parts: [{ text: prompt }] });
             const payload = { contents: chatHistory };
-            const apiKey = ""; // Canvas will automatically provide it
+            const apiKey = firebaseConfig.apiKey; // <-- ВИПРАВЛЕНО: Використовуємо API ключ з firebaseConfig
             const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
 
             try {
@@ -944,4 +944,3 @@
         </script>
     </body>
     </html>
-
