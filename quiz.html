@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Опитувальник «Мій профіль викладача цифрової доби»</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            background-color: #f4f7f9;
+            color: #333;
+            padding: 2rem;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 800px;
+            width: 100%;
+            background: #fff;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            margin: 1rem 0;
+        }
+        h1, h2 {
+            color: #1e3a8a;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 0.75rem;
+            margin-bottom: 2rem;
+            font-weight: 700;
+        }
+        .instruction {
+            margin-bottom: 2.5rem;
+            padding: 1.5rem;
+            background-color: #e0f7fa; /* Light cyan */
+            border-left: 6px solid #00bcd4; /* Cyan */
+            border-radius: 8px;
+            font-size: 0.95rem;
+            line-height: 1.8;
+            color: #263238; /* Darker text */
+        }
+        .instruction strong {
+            color: #00838f; /* Even darker cyan */
+        }
+        .block {
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e0e0e0;
+        }
+        .block h2 {
+            border-bottom: none;
+            margin-bottom: 1.5rem;
+            font-size: 1.75rem;
+            color: #334155; /* Slate-700 */
+        }
+        .question {
+            margin-bottom: 2rem;
+        }
+        .question p {
+            font-weight: 500;
+            margin-bottom: 1rem;
+            color: #475569; /* Slate-600 */
+        }
+        .rating-scale {
+            display: flex;
+            gap: 0.75rem; /* Reduced gap for better mobile fit */
+            flex-wrap: wrap; /* Allow wrapping on small screens */
+            justify-content: center; /* Center items for better appearance */
+        }
+        .rating-scale input[type="radio"] {
+            display: none;
+        }
+        .rating-scale label {
+            cursor: pointer;
+            padding: 0.75rem 1.5rem;
+            border-radius: 9999px; /* Fully rounded */
+            border: 1px solid #cbd5e1; /* Gray-300 */
+            transition: all 0.3s ease-in-out;
+            background-color: #f8fafc; /* Cool Gray-50 */
+            color: #4b5563; /* Gray-700 */
+            font-weight: 600;
+            min-width: 45px; /* Ensure sufficient touch target */
+            text-align: center;
+        }
+        .rating-scale input[type="radio"]:checked + label {
+            background-color: #38bdf8; /* Sky-500 */
+            color: #fff;
+            border-color: #38bdf8;
+            box-shadow: 0 4px 12px rgba(56, 189, 248, 0.4); /* Enhanced shadow */
+            transform: translateY(-2px); /* Slight lift */
+        }
+        .ai-level {
+            margin-top: 2.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px dashed #cbd5e1; /* Dashed line for distinction */
+            color: #475569; /* Slate-600 */
+        }
+        .ai-level p {
+            font-weight: 600;
+            margin-bottom: 1rem;
+            font-size: 1.05rem;
+        }
+        .ai-level label {
+            display: flex; /* Use flex for alignment */
+            align-items: center; /* Vertically align radio and text */
+            margin-bottom: 0.75rem;
+            cursor: pointer;
+            font-weight: 400;
+            padding: 0.5rem 0;
+            transition: background-color 0.2s ease;
+            border-radius: 6px;
+        }
+        .ai-level label:hover {
+            background-color: #f0f4f8; /* Light hover effect */
+        }
+        .ai-level input[type="radio"] {
+            margin-right: 0.75rem;
+            transform: scale(1.2); /* Slightly larger radio buttons */
+        }
+        .button-group {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 2px solid #e2e8f0;
+        }
+        .btn {
+            padding: 1rem 2.5rem;
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #fff;
+            background-color: #1e3a8a; /* Indigo-800 */
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+            box-shadow: 0 4px 15px rgba(30, 58, 138, 0.3);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .btn:hover {
+            background-color: #172b5c; /* Darker indigo */
+            box-shadow: 0 6px 20px rgba(30, 58, 138, 0.4);
+            transform: translateY(-2px);
+        }
+        .results-section {
+            margin-top: 3.5rem;
+            padding-top: 2.5rem;
+            border-top: 2px solid #e2e8f0;
+            background-color: #f0f9ff; /* Light blue background for results */
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: inset 0 0 15px rgba(0, 188, 212, 0.1);
+        }
+        .results-section h2 {
+            color: #00796b; /* Teal-700 */
+            border-bottom: 2px solid #b2dfdb;
+            padding-bottom: 0.75rem;
+        }
+        .results-section h3 {
+            color: #00796b; /* Teal-700 */
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+            font-weight: 600;
+        }
+        .results-section p {
+            margin-bottom: 0.75rem;
+            font-size: 1.05rem;
+            color: #37474f; /* Blue Grey-800 */
+        }
+        .results-section p strong {
+            color: #004d40; /* Darker teal */
+        }
+        .recommendations-section {
+            margin-top: 2.5rem;
+            padding-top: 2rem;
+            border-top: 1px dashed #b2dfdb;
+            background-color: #fffde7; /* Light yellow background */
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+        .recommendations-section h3 {
+            color: #f57f17; /* Amber-900 */
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid #ffcc80;
+            padding-bottom: 0.5rem;
+        }
+        .recommendations-section p {
+            color: #5d4037; /* Brown-800 */
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+        .loading-spinner {
+            border: 4px solid #f3f3f3; /* Light grey */
+            border-top: 4px solid #38bdf8; /* Blue */
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            animation: spin 1s linear infinite;
+            display: inline-block;
+            vertical-align: middle;
+            margin-left: 10px;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .message-box {
+            padding: 1rem;
+            margin-top: 1rem;
+            border-radius: 8px;
+            font-weight: 500;
+            text-align: center;
+        }
+        .message-box.success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .message-box.error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem;
+            }
+            .container {
+                padding: 1.5rem;
+                margin: 0.5rem 0;
+            }
+            h1 {
+                font-size: 1.75rem;
+                text-align: center;
+            }
+            h2 {
+                font-size: 1.5rem;
+            }
+            .instruction {
+                padding: 1rem;
+                margin-bottom: 2rem;
+            }
+            .block {
+                padding: 1.5rem;
+            }
+            .rating-scale {
+                justify-content: space-around;
+                gap: 0.5rem;
+            }
+            .rating-scale label {
+                padding: 0.6rem 1.2rem;
+                font-size: 0.9rem;
+            }
+            .btn {
+                padding: 0.8rem 2rem;
+                font-size: 1rem;
+            }
+            .results-section {
+                padding: 1.5rem;
+            }
+            .recommendations-section {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p id="userIdDisplay" class="text-sm text-gray-500 text-right mb-4"></p>
+        <h1>📝 Опитувальник «Мій профіль викладача цифрової доби»</h1>
+
+        <div class="instruction rounded-lg">
+            <p class="font-semibold text-lg mb-2"><strong>Інструкція для учасників</strong></p>
+            <p>Відповідайте на твердження за шкалою від 1 до 5: <strong>1 – зовсім не згоден(на)</strong>, <strong>5 – повністю згоден(на)</strong>. Після кожного блоку позначте свій рівень роботи з ШІ у цій ролі.</p>
+            <ul class="list-disc pl-5 mt-3">
+                <li>**Ознайомлений(а) з інструментами:** Ви знаєте про існування AI-інструментів і можете їх використовувати для базових завдань.</li>
+                <li>**Системно інтегрую в практику:** Ви регулярно використовуєте ШІ для досягнення дидактичних цілей, він є невід'ємною частиною вашої роботи.</li>
+                <li>**Розробляю власні кейси/методики з ШІ:** Ви не просто використовуєте ШІ, а створюєте власні унікальні підходи та сценарії його застосування.</li>
+            </ul>
+        </div>
+
+        <form id="quizForm">
+            <!-- Блок 1. Викладач -->
+            <div class="block">
+                <h2>Блок 1. Викладач</h2>
+                <div class="question">
+                    <p>1. Я адаптую пояснення складних понять за допомогою ШІ (візуалізації, приклади).</p>
+                    <div class="rating-scale">
+                        <input type="radio" id="q1-1" name="q1" value="1"><label for="q1-1" class="rounded-full">1</label>
+                        <input type="radio" id="q1-2" name="q1" value="2"><label for="q1-2" class="rounded-full">2</label>
+                        <input type="radio" id="q1-3" name="q1" value="3"><label for="q1-3" class="rounded-full">3</label>
+                        <input type="radio" id="q1-4" name="q1" value="4"><label for="q1-4" class="rounded-full">4</label>
+                        <input type="radio" id="q1-5" name="q1" value="5"><label for="q1-5" class="rounded-full">5</label>
+                    </div>
+                </div>
+                <div class="question">
+                    <p>2. Я підбираю AI-інструменти відповідно до дидактичної мети.</p>
+                    <div class="rating-scale">
+                        <input type="radio" id="q2-1" name="q2" value="1"><label for="q2-1" class="rounded-full">1</label>
+                        <input type="radio" id="q2-2" name="q2" value="2"><label for="q2-2" class="rounded-full">2</label>
+                        <input type="radio" id="q2-3" name="q2" value="3"><label for="q2-3" class="rounded-full">3</label>
+                        <input type="radio" id="q2-4" name="q2" value="4"><label for="q2-4" class="rounded-full">4</label>
+                        <input type="radio" id="q2-5" name="q2" value="5"><label for="q2-5" class="rounded-full">5</label>
+                    </div>
+                </div>
+                <div class="question">
+                    <p>3. Я можу пояснити одну тему кількома способами й використовую для цього ШІ.</p>
+                    <div class="rating-scale">
+                        <input type="radio" id="q3-1" name="q3" value="1"><label for="q3-1" class="rounded-full">1</label>
+                        <input type="radio" id="q3-2" name="q3" value="2"><label for="q3-2" class="rounded-full">2</label>
+                        <input type="radio" id="q3-3" name="q3" value="3"><label for="q3-3" class="rounded-full">3</label>
+                        <input type="radio" id="q3-4" name="q3" value="4"><label for="q3-4" class="rounded-full">4</label>
+                        <input type="radio" id="q3-5" name="q3" value="5"><label for="q3-5" class="rounded-full">5</label>
+                    </div>
+                </div>
+                <div class="question">
+                    <p>4. Я інтегрую ШІ у свої матеріали без втрати предметної глибини.</p>
+                    <div class="rating-scale">
+                        <input type="radio" id="q4-1" name="q4" value="1"><label for="q4-1" class="rounded-full">1</label>
+                        <input type="radio" id="q4-2" name="q4" value="2"><label for="q4-2" class="rounded-full">2</label>
+                        <input type="radio" id="q4-3" name="q4" value="3"><label for="q4-3" class="rounded-full">3</label>
+                        <input type="radio" id="q4-4" name="q4" value="4"><label for="q4-4" class="rounded-full">4</label>
+                        <input type="radio" id="q4-5" name="q4" value="5"><label for="q4-5" class="rounded-full">5</label>
+                    </div>
+                </div>
+                <div class="question">
+                    <p>5. Я відчуваю впевненість у поєднанні предметних, педагогічних і технологічних знань.</p>
+                    <div class="rating-scale">
+                        <input type="radio" id="q5-1" name="q5" value="1"><label for="q5-1" class="rounded-full">1</label>
+                        <input type="radio" id="q5-2" name="q5" value="2"><label for="q5-2" class="rounded-full">2</label>
+                        <input type="radio" id="q5-3" name="q5" value="3"><label for="q5-3" class="rounded-full">3</label>
+                        <input type="radio" id="q5-4" name="q5" value="4"><label for="q5-4" class="rounded-full">4</label>
+                        <input type="radio" id="q5-5" name="q5" value="5"><label for="q5-5" class="rounded-full">5</label>
+                    </div>
+                </div>
+                <div class="ai-level">
+                    <p><strong>Ваш рівень у цій ролі:</strong></p>
+                    <label class="rounded-lg"><input type="radio" name="ai-level-1" value="Ознайомлений"> Ознайомлений з інструментами</label>
+                    <label class="rounded-lg"><input type="radio" name="ai-level-1" value="Системно інтегрую"> Системно інтегрую в практику</label>
+                    <label class="rounded-lg"><input type="radio" name="ai-level-1" value="Розробляю власні кейси"> Розробляю власні кейси/методики з ШІ</label>
+                </div>
+            </div>
+
+            <!-- Блок 2. Ментор -->
+            <div class="block">
+                <h2>Блок 2. Ментор</h2>
+                <div class="question">
+                    <p>1. Я узгоджую зі студентом очікування й межі використання ШІ.</p>
+                    <div class="rating-scale">
+                        <input type="radio" id="q6-1" name="q6" value="1"><label for="q6-1" class="rounded-full">1</label>
+                        <input type="radio" id="q6-2" name="q6" value="2"><label for="q6-2" class="rounded-full">2</label>
+                        <input type="radio" id="q6-3" name="q6" value="3"><label for="q6-3" class="rounded-full">3</label>
+                        <input type="radio" id="q6-4" name="q6" value="4"><label for="q6-4" class="rounded-full">4</label>
+                        <input type="radio" id="q6-5" name="q6" value="5"><label for="q6-5" class="rounded-full">5</label>
+                    </div>
+                </div>
+                <div class="question">
+                    <p>2. Я використовую ШІ, щоб підготувати персоналізовані поради, але остаточне рішення залишаю за собою.</p>
+                    <div class="rating-scale">
+                        <input type="radio" id="q7-1" name="q7" value="1"><label for="q7-1" class="rounded-full">1</label>
+                        <input type="radio" id="q7-2" name="q7" value="2"><label for="q7-2" class="rounded-full">2</label>
+                        <input type="radio" id="q7-3" name="q7" value="3"><label for="q7-3" class="rounded-full">3</label>
+                        <input type="radio" id="q7-4" name="q7" value="4"><label for="q7-4" class="rounded-full">4</label>
+                        <input type="radio" id="q7-5" name="q7" value="5"><label for="q7-5" class="rounded-full">5</label>
+                    </div>
+                </div>
+                <div class="question">
+                    <p>3. Я допомагаю студенту самостійно визначати цілі та способи їх досягнення.</p>
+                    <div class="rating-scale">
+                        <input type="radio" id="q8-1" name="q8" value="1"><label for="q8-1" class="rounded-full">1</label>
+                        <input type="radio" id="q8-2" name="q8" value="2"><label for="q8-2" class="rounded-full">2</label>
+                        <input type="radio" id="q8-3" name="q8" value="3"><label for="q8-3" class="rounded-full">3</label>
+                        <input type="radio" id="q8-4" name="q8" value="4"><label for="q8-4" class="rounded-full">4</label>
+                        <input type="radio" id="q8-5" name="q8" value="5"><label for="q8-5" class="rounded-full">5</label>
+                    </div>
+                </div>
+                <div class="question">
+                    <p>4. Я дотримуюся етичності й конфіденційності у використанні ШІ для менторства.</p>
+                    <div class="rating-scale">
+                        <input type="radio" id="q9-1" name="q9" value="1"><label for="q9-1" class="rounded-full">1</label>
+                        <input type="radio" id="q9-2" name="q9" value="2"><label for="q9-2" class="rounded-full">2</label>
+                        <input type="radio" id="q9-3" name="q9" value="3"><label for="q9-3" class="rounded-full">3</label>
+                        <input type="radio" id="q9-4" name="q9" value="4"><label for="q9-4" class="rounded-full">4</label>
+                        <input type="radio" id="q9-5" name="q9" value="5"><label for="q9-5" class="rounded-full">5</label>
+                    </div>
+                </div>
+                <div class="question">
+                    <p>5. Я регулярно рефлексую та коригую свій стиль наставництва.</p>
+                    <div class="rating-scale">
+                        <input type="radio" id="q10-1" name="q10" value="1"><label for="q10-1" class="rounded-full">1</label>
+                        <input type="radio" id="q10-2" name="q10" value="2"><label for="q10-2" class="rounded-full">2</label>
+                        <input type="radio" id="q10-3" name="q10" value="3"><label for="q10-3" class="rounded-full">3</label>
+                        <input type="radio" id="q10-4" name="q10" value="4"><label for="q10-4" class="rounded-full">4</label>
+                        <input type="radio" id="q10-5" name="q10" value="5"><label for="q10-5" class="rounded-full">5</label>
+                    </div>
+                </div>
+                <div class="ai-level">
+                    <p><strong>Ваш рівень у цій ролі:</strong></p>
+                    <label class="rounded-lg"><input type="radio" name="ai-level-2" value="Ознайомлений"> Ознайомлений з інструментами</label>
+                    <label class="rounded-lg"><input type="radio" name="ai-level-2" value="Системно інтегрую"> Системно інтегрую в практику</label>
+                    <label class="rounded-lg"><input type="radio" name="ai-level-2" value="Розробляю власні кейси"> Розробляю власні кейси/методики з ШІ</label>
+                </div>
+            </div>
+            
+            <!-- Блок 3. Фасилітатор -->
+            <div class="block">
+                <h2>Блок 3. Фасилітатор</h2>
+                <div class="question">
+                    <p>1. Я створюю безпечне, інклюзивне середовище для обговорень.</p>
+                    <div class="rating-scale">
+                        <input type="radio" id="q11-1" name="q11" value="1"><label for="q11-1" class="rounded-full">1</label>
+                        <input type="radio" id="q11-2" name="q11" value="2"><label for="q11-2" class="rounded-full">2</label>
+                        <input type="radio" id="q11-3" name="q11" value="3"><label for="q11-3" class="rounded-full">3</label>
+                        <input type="radio" id="q11-4" name="q11" value="4"><label for="q11-4" class="rounded-full">4</label>
+                        <input type="radio" id="q11-5" name="q11" value="5"><label for="q11-5" class="rounded-full">5</label>
+                    </div>
+                </div>
+                <div class="question">
+                    <p>2. Я використовую ШІ для генерації кейсів чи запитань, але сам/сама керую процесом.</p>
+                    <div class="rating-scale">
+                        <input type="radio" id="q12-1" name="q12" value="1"><label for="q12-1" class="rounded-full">1</label>
+                        <input type="radio" id="q12-2" name="q12" value="2"><label for="q12-2" class="rounded-full">2</label>
+                        <input type="radio" id="q12-3" name="q12" value="3"><label for="q12-3" class="rounded-full">3</label>
+                        <input type="radio" id="q12-4" name="q12" value="4"><label for="q12-4" class="rounded-full">4</label>
+                        <input type="radio" id="q12-5" name="q12" value="5"><label for="q12-5" class="rounded-full">5</label>
+                    </div>
+                </div>
+                <div class="question">
+                    <p>3. Я допомагаю групі виробляти спільні рішення й домовленості.</p>
+                    <div class="rating-scale">
+                        <input type="radio" id="q13-1" name="q13" value="1"><label for="q13-1" class="rounded-full">1</label>
+                        <input type="radio" id="q13-2" name="q13" value="2"><label for="q13-2" class="rounded-full">2</label>
+                        <input type="radio" id="q13-3" name="q13" value="3"><label for="q13-3" class="rounded-full">3</label>
+                        <input type="radio" id="q13-4" name="q13" value="4"><label for="q13-4" class="rounded-full">4</label>
+                        <input type="radio" id="q13-5" name="q13" value="5"><label for="q13-5" class="rounded-full">5</label>
+                    </div>
+                </div>
+                <div class="question">
+                    <p>4. Я відстежую емоційний клімат у групі та коригую його.</p>
+                    <div class="rating-scale">
+                        <input type="radio" id="q14-1" name="q14" value="1"><label for="q14-1" class="rounded-full">1</label>
+                        <input type="radio" id="q14-2" name="q14" value="2"><label for="q14-2" class="rounded-full">2</label>
+                        <input type="radio" id="q14-3" name="q14" value="3"><label for="q14-3" class="rounded-full">3</label>
+                        <input type="radio" id="q14-4" name="q14" value="4"><label for="q14-4" class="rounded-full">4</label>
+                        <input type="radio" id="q14-5" name="q14" value="5"><label for="q14-5" class="rounded-full">5</label>
+                    </div>
+                </div>
+                <div class="question">
+                    <p>5. Я планую роботу групи так, щоб усі мали шанс висловитись.</p>
+                    <div class="rating-scale">
+                        <input type="radio" id="q15-1" name="q15" value="1"><label for="q15-1" class="rounded-full">1</label>
+                        <input type="radio" id="q15-2" name="q15" value="2"><label for="q15-2" class="rounded-full">2</label>
+                        <input type="radio" id="q15-3" name="q15" value="3"><label for="q15-3" class="rounded-full">3</label>
+                        <input type="radio" id="q15-4" name="q15" value="4"><label for="q15-4" class="rounded-full">4</label>
+                        <input type="radio" id="q15-5" name="q15" value="5"><label for="q15-5" class="rounded-full">5</label>
+                    </div>
+                </div>
+                <div class="ai-level">
+                    <p><strong>Ваш рівень у цій ролі:</strong></p>
+                    <label class="rounded-lg"><input type="radio" name="ai-level-3" value="Ознайомлений"> Ознайомлений з інструментами</label>
+                    <label class="rounded-lg"><input type="radio" name="ai-level-3" value="Системно інтегрую"> Системно інтегрую в практику</label>
+                    <label class="rounded-lg"><input type="radio" name="ai-level-3" value="Розробляю власні кейси"> Розробляю власні кейси/методики з ШІ</label>
+                </div>
+            </div>
+
+            <!-- Блок 4. Дизайнер навчального середовища -->
+            <div class="block">
+                <h2>Блок 4. Дизайнер навчального середовища (IBSTPI – освітній дизайн)</h2>
+                <div class="question">
+                    <p>1. Я аналізую потреби студентів перед вибором AI-інструментів.</p>
+                    <div class="rating-scale">
+                        <input type="radio" id="q16-1" name="q16" value="1"><label for="q16-1" class="rounded-full">1</label>
+                        <input type="radio" id="q16-2" name="q16" value="2"><label for="q16-2" class="rounded-full">2</label>
+                        <input type="radio" id="q16-3" name="q16" value="3"><label for="q16-3" class="rounded-full">3</label>
+                        <input type="radio" id="q16-4" name="q16" value="4"><label for="q16-4" class="rounded-full">4</label>
+                        <input type="radio" id="q16-5" name="q16" value="5"><label for="q16-5" class="rounded-full">5</label>
+                    </div>
+                </div>
+                <div class="question">
+                    <p>2. Я визначаю результати навчання до початку створення матеріалів.</p>
+                    <div class="rating-scale">
+                        <input type="radio" id="q17-1" name="q17" value="1"><label for="q17-1" class="rounded-full">1</label>
+                        <input type="radio" id="q17-2" name="q17" value="2"><label for="q17-2" class="rounded-full">2</label>
+                        <input type="radio" id="q17-3" name="q17" value="3"><label for="q17-3" class="rounded-full">3</label>
+                        <input type="radio" id="q17-4" name="q17" value="4"><label for="q17-4" class="rounded-full">4</label>
+                        <input type="radio" id="q17-5" name="q17" value="5"><label for="q17-5" class="rounded-full">5</label>
+                    </div>
+                </div>
+                <div class="question">
+                    <p>3. Я використовую ШІ для прототипування матеріалів, але оцінюю їх якість самостійно.</p>
+                    <div class="rating-scale">
+                        <input type="radio" id="q18-1" name="q18" value="1"><label for="q18-1" class="rounded-full">1</label>
+                        <input type="radio" id="q18-2" name="q18" value="2"><label for="q18-2" class="rounded-full">2</label>
+                        <input type="radio" id="q18-3" name="q18" value="3"><label for="q18-3" class="rounded-full">3</label>
+                        <input type="radio" id="q18-4" name="q18" value="4"><label for="q18-4" class="rounded-full">4</label>
+                        <input type="radio" id="q18-5" name="q18" value="5"><label for="q18-5" class="rounded-full">5</label>
+                    </div>
+                </div>
+                <div class="question">
+                    <p>4. Я розробляю систему оцінювання ще до створення контенту (backward design).</p>
+                    <div class="rating-scale">
+                        <input type="radio" id="q19-1" name="q19" value="1"><label for="q19-1" class="rounded-full">1</label>
+                        <input type="radio" id="q19-2" name="q19" value="2"><label for="q19-2" class="rounded-full">2</label>
+                        <input type="radio" id="q19-3" name="q19" value="3"><label for="q19-3" class="rounded-full">3</label>
+                        <input type="radio" id="q19-4" name="q19" value="4"><label for="q19-4" class="rounded-full">4</label>
+                        <input type="radio" id="q19-5" name="q19" value="5"><label for="q19-5" class="rounded-full">5</label>
+                    </div>
+                </div>
+                <div class="question">
+                    <p>5. Я планую навчальні матеріали так, щоб їх можна було адаптувати під різних студентів.</p>
+                    <div class="rating-scale">
+                        <input type="radio" id="q20-1" name="q20" value="1"><label for="q20-1" class="rounded-full">1</label>
+                        <input type="radio" id="q20-2" name="q20" value="2"><label for="q20-2" class="rounded-full">2</label>
+                        <input type="radio" id="q20-3" name="q20" value="3"><label for="q20-3" class="rounded-full">3</label>
+                        <input type="radio" id="q20-4" name="q20" value="4"><label for="q20-4" class="rounded-full">4</label>
+                        <input type="radio" id="q20-5" name="q20" value="5"><label for="q20-5" class="rounded-full">5</label>
+                    </div>
+                </div>
+                <div class="ai-level">
+                    <p><strong>Ваш рівень у цій ролі:</strong></p>
+                    <label class="rounded-lg"><input type="radio" name="ai-level-4" value="Ознайомлений"> Ознайомлений з інструментами</label>
+                    <label class="rounded-lg"><input type="radio" name="ai-level-4" value="Системно інтегрую"> Системно інтегрую в практику</label>
+                    <label class="rounded-lg"><input type="radio" name="ai-level-4" value="Розробляю власні кейси"> Розробляю власні кейси/методики з ШІ</label>
+                </div>
+            </div>
+
+            <!-- Блок 5. Новатор -->
+            <div class="block">
+                <h2>Блок 5. Новатор</h2>
+                <div class="question">
+                    <p>1. Я регулярно тестую нові формати занять або оцінювання.</p>
+                    <div class="rating-scale">
+                        <input type="radio" id="q21-1" name="q21" value="1"><label for="q21-1" class="rounded-full">1</label>
+                        <input type="radio" id="q21-2" name="q21" value="2"><label for="q21-2" class="rounded-full">2</label>
+                        <input type="radio" id="q21-3" name="q21" value="3"><label for="q21-3" class="rounded-full">3</label>
+                        <input type="radio" id="q21-4" name="q21" value="4"><label for="q21-4" class="rounded-full">4</label>
+                        <input type="radio" id="q21-5" name="q21" value="5"><label for="q21-5" class="rounded-full">5</label>
+                    </div>
+                </div>
+                <div class="question">
+                    <p>2. Я використовую ШІ для генерації альтернативних траєкторій навчання.</p>
+                    <div class="rating-scale">
+                        <input type="radio" id="q22-1" name="q22" value="1"><label for="q22-1" class="rounded-full">1</label>
+                        <input type="radio" id="q22-2" name="q22" value="2"><label for="q22-2" class="rounded-full">2</label>
+                        <input type="radio" id="q22-3" name="q22" value="3"><label for="q22-3" class="rounded-full">3</label>
+                        <input type="radio" id="q22-4" name="q22" value="4"><label for="q22-4" class="rounded-full">4</label>
+                        <input type="radio" id="q22-5" name="q22" value="5"><label for="q22-5" class="rounded-full">5</label>
+                    </div>
+                </div>
+                <div class="question">
+                    <p>3. Я збираю дані та відгуки, щоб оцінювати ефективність інновацій.</p>
+                    <div class="rating-scale">
+                        <input type="radio" id="q23-1" name="q23" value="1"><label for="q23-1" class="rounded-full">1</label>
+                        <input type="radio" id="q23-2" name="q23" value="2"><label for="q23-2" class="rounded-full">2</label>
+                        <input type="radio" id="q23-3" name="q23" value="3"><label for="q23-3" class="rounded-full">3</label>
+                        <input type="radio" id="q23-4" name="q23" value="4"><label for="q23-4" class="rounded-full">4</label>
+                        <input type="radio" id="q23-5" name="q23" value="5"><label for="q23-5" class="rounded-full">5</label>
+                    </div>
+                </div>
+                <div class="question">
+                    <p>4. Я готовий(а) до експериментів і пробую «нестандартні» підходи.</p>
+                    <div class="rating-scale">
+                        <input type="radio" id="q24-1" name="q24" value="1"><label for="q24-1" class="rounded-full">1</label>
+                        <input type="radio" id="q24-2" name="q24" value="2"><label for="q24-2" class="rounded-full">2</label>
+                        <input type="radio" id="q24-3" name="q24" value="3"><label for="q24-3" class="rounded-full">3</label>
+                        <input type="radio" id="q24-4" name="q24" value="4"><label for="q24-4" class="rounded-full">4</label>
+                        <input type="radio" id="q24-5" name="q24" value="5"><label for="q24-5" class="rounded-full">5</label>
+                    </div>
+                </div>
+                <div class="question">
+                    <p>5. Я ділюся власними інноваційними практиками зі спільнотою колег.</p>
+                    <div class="rating-scale">
+                        <input type="radio" id="q25-1" name="q25" value="1"><label for="q25-1" class="rounded-full">1</label>
+                        <input type="radio" id="q25-2" name="q25" value="2"><label for="q25-2" class="rounded-full">2</label>
+                        <input type="radio" id="q25-3" name="q25" value="3"><label for="q25-3" class="rounded-full">3</label>
+                        <input type="radio" id="q25-4" name="q25" value="4"><label for="q25-4" class="rounded-full">4</label>
+                        <input type="radio" id="q25-5" name="q25" value="5"><label for="q25-5" class="rounded-full">5</label>
+                    </div>
+                </div>
+                <div class="ai-level">
+                    <p><strong>Ваш рівень у цій ролі:</strong></p>
+                    <label class="rounded-lg"><input type="radio" name="ai-level-5" value="Ознайомлений"> Ознайомлений з інструментами</label>
+                    <label class="rounded-lg"><input type="radio" name="ai-level-5" value="Системно інтегрую"> Системно інтегрую в практику</label>
+                    <label class="rounded-lg"><input type="radio" name="ai-level-5" value="Розробляю власні кейси"> Розробляю власні кейси/методики з ШІ</label>
+                </div>
+            </div>
+
+            <div class="button-group">
+                <button type="button" class="btn rounded-full" onclick="calculateAndSaveResults()">Отримати та зберегти результати</button>
+            </div>
+            <div id="saveMessage" class="message-box hidden"></div>
+        </form>
+
+        <div id="results" class="results-section hidden">
+            <h2>Ваші результати</h2>
+            <div id="results-content"></div>
+            <div class="button-group mt-6">
+                <button type="button" class="btn rounded-full" id="getRecommendationsBtn" onclick="getGeminiRecommendations()" style="display: none;">Отримати персоналізовані рекомендації ✨</button>
+            </div>
+            <div id="recommendations" class="recommendations-section hidden">
+                <h3>Персоналізовані рекомендації</h3>
+                <div id="recommendations-content"></div>
+            </div>
+        </div>
+
+    </div>
+
+    <script type="module">
+        // Firebase imports
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+        // Global variables provided by the environment
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
+        const firebaseConfig = JSON.parse(typeof __firebase_config !== 'undefined' ? __firebase_config : '{}');
+
+        // Firebase App and Services initialization
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+        const auth = getAuth(app);
+
+        let currentUserId = 'anonymous'; // Default for unauthenticated users
+
+        // Authenticate user (anonymous or with custom token)
+        onAuthStateChanged(auth, async (user) => {
+            if (user) {
+                currentUserId = user.uid;
+            } else {
+                try {
+                    if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
+                        await signInWithCustomToken(auth, __initial_auth_token);
+                    } else {
+                        await signInAnonymously(auth);
+                    }
+                    currentUserId = auth.currentUser.uid;
+                } catch (error) {
+                    console.error("Помилка автентифікації Firebase:", error);
+                    // Fallback to a random ID if authentication completely fails, though Firebase anonymous auth should generally work
+                    currentUserId = crypto.randomUUID(); 
+                }
+            }
+            document.getElementById('userIdDisplay').textContent = `Ваш ID: ${currentUserId}`;
+        });
+
+        // Global variables to store quiz results
+        let quizResults = {
+            totalScores: {},
+            aiLevels: {},
+            highestRole: '',
+            highestScore: -0.1,
+            lowestRole: '',
+            lowestScore: 5.1
+        };
+
+        /**
+         * Fetches data with exponential backoff for retries.
+         * @param {string} url - The URL to fetch from.
+         * @param {object} options - Fetch options.
+         * @param {number} [maxRetries=5] - Maximum number of retries.
+         * @param {number} [delay=1000] - Initial delay in milliseconds.
+         * @returns {Promise<Response>} The fetch response.
+         */
+        async function exponentialBackoffFetch(url, options, maxRetries = 5, delay = 1000) {
+            for (let i = 0; i < maxRetries; i++) {
+                try {
+                    const response = await fetch(url, options);
+                    if (response.ok) {
+                        return response;
+                    } else if (response.status === 429) { // Too Many Requests
+                        console.warn(`Спроба ${i + 1}/${maxRetries}: Забагато запитів. Повторна спроба через ${delay / 1000}с...`);
+                        await new Promise(res => setTimeout(res, delay));
+                        delay *= 2; // Експоненційне збільшення
+                    } else {
+                        throw new Error(`HTTP помилка! статус: ${response.status}`);
+                    }
+                } catch (error) {
+                    console.error(`Помилка отримання даних: ${error.message}`);
+                    if (i < maxRetries - 1) {
+                        console.warn(`Спроба ${i + 1}/${maxRetries}: Помилка мережі. Повторна спроба через ${delay / 1000}с...`);
+                        await new Promise(res => setTimeout(res, delay));
+                        delay *= 2; // Експоненційне збільшення
+                    } else {
+                        throw error; // Перевищили максимальну кількість спроб
+                    }
+                }
+            }
+            throw new Error('Досягнуто максимальної кількості спроб для запиту.');
+        }
+
+        /**
+         * Displays a temporary message to the user.
+         * @param {string} message - The message to display.
+         * @param {string} type - 'success' or 'error'.
+         */
+        function showMessage(message, type) {
+            const messageBox = document.getElementById('saveMessage');
+            messageBox.textContent = message;
+            messageBox.classList.remove('hidden', 'success', 'error');
+            messageBox.classList.add(type);
+            setTimeout(() => {
+                messageBox.classList.add('hidden');
+            }, 5000); // Hide after 5 seconds
+        }
+
+        /**
+         * Saves the quiz results to Firestore.
+         * @param {object} resultsData - The data object containing quiz results.
+         */
+        async function saveResultsToFirestore(resultsData) {
+            if (!db) {
+                console.error("Firestore не ініціалізовано.");
+                showMessage("Помилка: Firestore не готовий. Спробуйте ще раз.", "error");
+                return;
+            }
+            try {
+                // Using a public collection for all teacher submissions
+                const collectionPath = `artifacts/${appId}/public/data/teacher_quiz_results`;
+                const docRef = await addDoc(collection(db, collectionPath), {
+                    timestamp: new Date().toISOString(),
+                    userId: currentUserId,
+                    quizData: resultsData
+                });
+                console.log("Результати успішно збережено у Firestore з ID: ", docRef.id);
+                showMessage("Ваші результати успішно збережено! ✔️", "success");
+            } catch (e) {
+                console.error("Помилка при збереженні результатів у Firestore: ", e);
+                showMessage(`Помилка при збереженні результатів: ${e.message} ❌`, "error");
+            }
+        }
+
+        /**
+         * Calculates quiz results and optionally saves them.
+         */
+        async function calculateAndSaveResults() {
+            const resultsDiv = document.getElementById('results-content');
+            const recommendationsBtn = document.getElementById('getRecommendationsBtn');
+            const recommendationsSection = document.getElementById('recommendations');
+            const saveMessage = document.getElementById('saveMessage');
+
+            resultsDiv.innerHTML = '';
+            recommendationsSection.classList.add('hidden'); // Hide recommendations initially
+            recommendationsBtn.style.display = 'none'; // Hide button initially
+            saveMessage.classList.add('hidden'); // Hide previous save messages
+
+            quizResults = { // Reset global quizResults
+                totalScores: {},
+                aiLevels: {},
+                highestRole: '',
+                highestScore: -0.1,
+                lowestRole: '',
+                lowestScore: 5.1
+            };
+
+            // Define the questions for each block
+            const blockQuestions = {
+                'Викладач': ['q1', 'q2', 'q3', 'q4', 'q5'],
+                'Ментор': ['q6', 'q7', 'q8', 'q9', 'q10'],
+                'Фасилітатор': ['q11', 'q12', 'q13', 'q14', 'q15'],
+                'Дизайнер': ['q16', 'q17', 'q18', 'q19', 'q20'],
+                'Новатор': ['q21', 'q22', 'q23', 'q24', 'q25']
+            };
+            
+            let allQuestionsAnswered = true;
+
+            // Calculate average for each block
+            Object.keys(blockQuestions).forEach((blockName, index) => {
+                const questionsInBlock = blockQuestions[blockName];
+                let sum = 0;
+                let answeredCount = 0;
+                questionsInBlock.forEach(qName => {
+                    const selectedOption = document.querySelector(`input[name="${qName}"]:checked`);
+                    if (selectedOption) {
+                        sum += parseInt(selectedOption.value);
+                        answeredCount++;
+                    }
+                });
+
+                // Check if all questions in the block were answered
+                if (answeredCount === questionsInBlock.length) {
+                    quizResults.totalScores[blockName] = (sum / questionsInBlock.length).toFixed(2);
+                } else {
+                    quizResults.totalScores[blockName] = 'Не всі питання блоку відповідено';
+                    allQuestionsAnswered = false;
+                }
+
+                // Get AI level for the block
+                const aiLevel = document.querySelector(`input[name="ai-level-${index + 1}"]:checked`);
+                if (aiLevel) {
+                    quizResults.aiLevels[blockName] = aiLevel.value;
+                } else {
+                    quizResults.aiLevels[blockName] = 'Не обрано';
+                    allQuestionsAnswered = false;
+                }
+            });
+
+            if (!allQuestionsAnswered) {
+                resultsDiv.innerHTML = '<p class="text-red-600 font-semibold">Будь ласка, дайте відповіді на всі питання та оберіть рівень ШІ у кожному блоці перед тим, як отримати результати.</p>';
+                document.getElementById('results').classList.remove('hidden');
+                document.getElementById('results').classList.add('block');
+                window.scrollTo(0, document.body.scrollHeight);
+                return;
+            }
+            
+            // Display results
+            let resultsHTML = '<h3>Профіль ролей</h3>';
+            
+            for (const role in quizResults.totalScores) {
+                resultsHTML += `<p><strong>${role}:</strong> Середній бал - ${quizResults.totalScores[role]}</p>`;
+                const score = parseFloat(quizResults.totalScores[role]);
+                // Only consider valid numbers for min/max
+                if (!isNaN(score)) {
+                    if (score < quizResults.lowestScore) {
+                        quizResults.lowestScore = score;
+                        quizResults.lowestRole = role;
+                    }
+                    if (score > quizResults.highestScore) {
+                        quizResults.highestScore = score;
+                        quizResults.highestRole = role;
+                    }
+                }
+            }
+
+            resultsHTML += '<br><h3>Інтерпретація</h3>';
+            if (quizResults.highestRole && quizResults.highestScore !== -0.1) {
+                resultsHTML += `<p>✅ <strong>Ваша сильна сторона:</strong> ${quizResults.highestRole} (бал: ${quizResults.highestScore}).</p>`;
+            } else {
+                 resultsHTML += `<p>Не вдалося визначити сильну сторону. Переконайтеся, що всі питання відповідено коректно.</p>`;
+            }
+            
+            if (quizResults.lowestRole && quizResults.lowestScore !== 5.1) {
+                resultsHTML += `<p>⚠️ <strong>Зона розвитку:</strong> ${quizResults.lowestRole} (бал: ${quizResults.lowestScore}).</p>`;
+            } else {
+                resultsHTML += `<p>Не вдалося визначити зону розвитку. Переконайтеся, що всі питання відповідено коректно.</p>`;
+            }
+
+            resultsHTML += '<br><h3>AI-зрілість</h3>';
+            for (const role in quizResults.aiLevels) {
+                let interpretation = '';
+                if (quizResults.aiLevels[role] === 'Ознайомлений') {
+                    interpretation = 'Вам будуть корисні **базові** тренінги, що знайомлять з основними інструментами та їх застосуванням.';
+                } else if (quizResults.aiLevels[role] === 'Системно інтегрую') {
+                    interpretation = 'Вам підійдуть **поглиблені** тренінги, що пропонують більш комплексні сценарії використання ШІ.';
+                } else if (quizResults.aiLevels[role] === 'Розробляю власні кейси') {
+                    interpretation = 'Ви можете брати участь у майстер-класах та дискусіях для обміну досвідом та розробки **інноваційних** підходів.';
+                } else {
+                    interpretation = 'Будь ласка, оберіть ваш рівень ШІ для цієї ролі.';
+                }
+                resultsHTML += `<p>👉 <strong>${role}:</strong> ${quizResults.aiLevels[role]}. <br>${interpretation}</p>`;
+            }
+
+            resultsDiv.innerHTML = resultsHTML;
+            document.getElementById('results').classList.remove('hidden');
+            document.getElementById('results').classList.add('block');
+            recommendationsBtn.style.display = 'block'; // Show the recommendations button
+            window.scrollTo(0, document.body.scrollHeight);
+
+            // Save results to Firestore after displaying them
+            await saveResultsToFirestore(quizResults);
+        }
+
+        async function getGeminiRecommendations() {
+            const recommendationsContentDiv = document.getElementById('recommendations-content');
+            const recommendationsSection = document.getElementById('recommendations');
+            const getRecommendationsBtn = document.getElementById('getRecommendationsBtn');
+
+            recommendationsSection.classList.remove('hidden');
+            recommendationsContentDiv.innerHTML = '<p class="text-center text-gray-600">Генерую рекомендації... <span class="loading-spinner"></span></p>';
+            getRecommendationsBtn.disabled = true; // Disable button while loading
+
+            const lowestRoleAILevel = quizResults.aiLevels[quizResults.lowestRole];
+
+            const prompt = `На основі моїх результатів опитувальника "Мій профіль викладача цифрової доби":
+Моя сильна сторона: ${quizResults.highestRole} (середній бал: ${quizResults.highestScore}).
+Моя зона розвитку: ${quizResults.lowestRole} (середній бал: ${quizResults.lowestScore}).
+Мій рівень AI-зрілості для зони розвитку "${quizResults.lowestRole}": ${lowestRoleAILevel}.
+Мої рівні AI-зрілості по всіх ролях:
+Викладач: ${quizResults.aiLevels['Викладач']}
+Ментор: ${quizResults.aiLevels['Ментор']}
+Фасилітатор: ${quizResults.aiLevels['Фасилітатор']}
+Дизайнер: ${quizResults.aiLevels['Дизайнер']}
+Новатор: ${quizResults.aiLevels['Новатор']}
+
+Будь ласка, надайте персоналізовані рекомендації щодо розвитку моєї зони розвитку "${quizResults.lowestRole}", враховуючи мої сильні сторони та мій рівень AI-зрілості саме в цій ролі. Запропонуйте конкретні кроки або ресурси для покращення, а також типи тренінгів, які були б найбільш корисними, виходячи з моєї AI-зрілості в цій ролі. Відповідь має бути розгорнутою, але чіткою та структурованою, використовуючи марковані списки для кроків та ресурсів.`;
+
+            let chatHistory = [];
+            chatHistory.push({ role: "user", parts: [{ text: prompt }] });
+            const payload = { contents: chatHistory };
+            const apiKey = ""; // Canvas will automatically provide it
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
+
+            try {
+                const response = await exponentialBackoffFetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                const result = await response.json();
+                
+                if (result.candidates && result.candidates.length > 0 &&
+                    result.candidates[0].content && result.candidates[0].content.parts &&
+                    result.candidates[0].content.parts.length > 0) {
+                    const text = result.candidates[0].content.parts[0].text;
+                    recommendationsContentDiv.innerHTML = `<p>${text.replace(/\n/g, '<br>')}</p>`; // Basic formatting for newlines
+                } else {
+                    recommendationsContentDiv.innerHTML = '<p class="text-red-600">Не вдалося отримати рекомендації. Спробуйте ще раз.</p>';
+                    console.error('Unexpected Gemini API response structure:', result);
+                }
+            } catch (error) {
+                recommendationsContentDiv.innerHTML = '<p class="text-red-600">Помилка під час отримання рекомендацій: ' + error.message + '</p>';
+                console.error('Error calling Gemini API:', error);
+            } finally {
+                getRecommendationsBtn.disabled = false; // Re-enable button
+                window.scrollTo(0, document.body.scrollHeight); // Scroll to recommendations
+            }
+        }
+    </script>
+</body>
+</html>
