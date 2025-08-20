@@ -618,16 +618,16 @@
 
     </div>
 
-    <!-- Завантажуємо Firebase SDKs -->
-    <script src="https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js"></script>
+    <!-- Завантажуємо Firebase SDKs (compat версії для глобального об'єкта 'firebase') -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
 
     <!-- Ваш JavaScript-код -->
     <script>
         // Глобальні змінні (заповніть ВАШИМИ ДАНИМИ З FIREBASE CONSOLE)
         const firebaseConfig = {
-            apiKey: "AIzaSyD_Bup-l5om_iKApapwK2heV7nPSad_aqQ",
+            apiKey: "AIzaSyD86f9CcQYTZBZGGV3mx0rrZ_oKVas3uPCI",
             authDomain: "teacher-profile-quiz-data.firebaseapp.com",
             projectId: "teacher-profile-quiz-data",
             storageBucket: "teacher-profile-quiz-data.firebasestorage.app",
@@ -638,8 +638,8 @@
 
         // Ініціалізація Firebase App та сервісів
         const app = firebase.initializeApp(firebaseConfig);
-        const db = firebase.firestore();
-        const auth = firebase.auth();
+        const db = firebase.firestore(); // Використовуємо .firestore() для compat версії
+        const auth = firebase.auth();   // Використовуємо .auth() для compat версії
 
         let currentUserId = 'anonymous'; // За замовчуванням для неаутентифікованих користувачів
 
@@ -649,12 +649,10 @@
                 currentUserId = user.uid;
             } else {
                 try {
-                    // Використовуємо signInAnonymously() без __initial_auth_token
                     await auth.signInAnonymously();
                     currentUserId = auth.currentUser.uid;
                 } catch (error) {
                     console.error("Помилка автентифікації Firebase:", error);
-                    // Повернення до випадкового ID, якщо автентифікація повністю не вдається
                     currentUserId = crypto.randomUUID(); 
                 }
             }
@@ -745,7 +743,7 @@
                 // Using a public collection for all teacher submissions
                 // Примітка: appId має бути вашим Project ID з Firebase Console.
                 const collectionPath = `artifacts/${firebaseConfig.projectId}/public/data/teacher_quiz_results`;
-                const docRef = await db.collection(collectionPath).add({
+                const docRef = await db.collection(collectionPath).add({ // Використовуємо db.collection() для compat версії
                     timestamp: new Date().toISOString(),
                     userId: currentUserId,
                     quizData: resultsData
@@ -844,7 +842,7 @@
                         quizResults.lowestRole = role;
                     }
                     if (score > quizResults.highestScore) {
-                        highestScore = score;
+                        quizResults.highestScore = score; // Corrected this line
                         quizResults.highestRole = role;
                     }
                 }
