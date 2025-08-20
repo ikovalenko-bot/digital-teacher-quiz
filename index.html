@@ -608,6 +608,7 @@
             <h2>Ваші результати</h2>
             <div id="results-content"></div>
             <div class="button-group mt-6">
+                <!-- Кнопка рекомендацій буде прихована за замовчуванням, оскільки Gemini API ключ не передається -->
                 <button type="button" class="btn rounded-full" id="getRecommendationsBtn" onclick="getGeminiRecommendations()" style="display: none;">Отримати персоналізовані рекомендації ✨</button>
             </div>
             <div id="recommendations" class="recommendations-section hidden">
@@ -741,7 +742,7 @@
             }
             try {
                 // Using a public collection for all teacher submissions
-                // Примітка: appId має бути вашим Project ID з Firebase Console.
+                // Примітка: projectId використовується для формування шляху колекції
                 const collectionPath = `artifacts/${firebaseConfig.projectId}/public/data/teacher_quiz_results`;
                 const docRef = await db.collection(collectionPath).add({ // Використовуємо db.collection() для compat версії
                     timestamp: new Date().toISOString(),
@@ -913,7 +914,8 @@
             let chatHistory = [];
             chatHistory.push({ role: "user", parts: [{ text: prompt }] });
             const payload = { contents: chatHistory };
-            const apiKey = firebaseConfig.apiKey; // <-- ВИПРАВЛЕНО: Використовуємо API ключ з firebaseConfig
+            // API ключ тут свідомо залишений порожнім, щоб не генерувати рекомендації без конфігурації
+            const apiKey = ""; 
             const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
 
             try {
