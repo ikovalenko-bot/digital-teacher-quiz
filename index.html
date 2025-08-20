@@ -580,6 +580,16 @@
                         <input type="radio" id="q24-5" name="q24" value="5"><label for="q24-5" class="rounded-full">5</label>
                     </div>
                 </div>
+                <div class="question">
+                    <p>5. Я ділюся власними інноваційними практиками зі спільнотою колег.</p>
+                    <div class="rating-scale">
+                        <input type="radio" id="q25-1" name="q25" value="1"><label for="q25-1" class="rounded-full">1</label>
+                        <input type="radio" id="q25-2" name="q25" value="2"><label for="q25-2" class="rounded-full">2</label>
+                        <input type="radio" id="q25-3" name="q25" value="3"><label for="q25-3" class="rounded-full">3</label>
+                        <input type="radio" id="q25-4" name="q24" value="4"><label for="q24-4" class="rounded-full">4</label>
+                        <input type="radio" id="q25-5" name="q25" value="5"><label for="q25-5" class="rounded-full">5</label>
+                    </div>
+                </div>
                 <div class="ai-level">
                     <p><strong>Ваш рівень у цій ролі:</strong></p>
                     <label class="rounded-lg"><input type="radio" name="ai-level-5" value="Ознайомлений"> Ознайомлений з інструментами</label>
@@ -598,7 +608,6 @@
             <h2>Ваші результати</h2>
             <div id="results-content"></div>
             <div class="button-group mt-6">
-                <!-- Кнопка рекомендацій буде прихована за замовчуванням, оскільки Gemini API ключ не передається -->
                 <button type="button" class="btn rounded-full" id="getRecommendationsBtn" onclick="getGeminiRecommendations()" style="display: none;">Отримати персоналізовані рекомендації ✨</button>
             </div>
             <div id="recommendations" class="recommendations-section hidden">
@@ -732,7 +741,7 @@
             }
             try {
                 // Using a public collection for all teacher submissions
-                // Примітка: projectId використовується для формування шляху колекції
+                // Примітка: appId має бути вашим Project ID з Firebase Console.
                 const collectionPath = `artifacts/${firebaseConfig.projectId}/public/data/teacher_quiz_results`;
                 const docRef = await db.collection(collectionPath).add({ // Використовуємо db.collection() для compat версії
                     timestamp: new Date().toISOString(),
@@ -904,7 +913,7 @@
             let chatHistory = [];
             chatHistory.push({ role: "user", parts: [{ text: prompt }] });
             const payload = { contents: chatHistory };
-            const apiKey = firebaseConfig.apiKey; // <-- ВИПРАВЛЕНО: Тепер використовуємо дійсний API ключ з firebaseConfig
+            const apiKey = firebaseConfig.apiKey; // <-- ВИПРАВЛЕНО: Використовуємо API ключ з firebaseConfig
             const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
 
             try {
@@ -932,8 +941,6 @@
                     window.scrollTo(0, document.body.scrollHeight); // Scroll to recommendations
                 }
             }
-        }
-    </script>
-</body>
-</html>
-
+        </script>
+    </body>
+    </html>
