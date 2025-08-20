@@ -478,7 +478,7 @@
 
             <!-- Блок 4. Дизайнер навчального середовища -->
             <div class="block">
-                <h2>Блок 4. Дизайнер навчального середовища (IBSTPI – освітній дизайн)</h2>
+                <h2>Блок 4. Дизайнер навчального середовища</h2>
                 <div class="question">
                     <p>1. Я аналізую потреби студентів перед вибором AI-інструментів.</p>
                     <div class="rating-scale">
@@ -586,7 +586,7 @@
                         <input type="radio" id="q25-1" name="q25" value="1"><label for="q25-1" class="rounded-full">1</label>
                         <input type="radio" id="q25-2" name="q25" value="2"><label for="q25-2" class="rounded-full">2</label>
                         <input type="radio" id="q25-3" name="q25" value="3"><label for="q25-3" class="rounded-full">3</label>
-                        <input type="radio" id="q25-4" name="q25" value="4"><label for="q25-4" class="rounded-full">4</label>
+                        <input type="radio" id="q25-4" name="q24" value="4"><label for="q24-4" class="rounded-full">4</label>
                         <input type="radio" id="q25-5" name="q25" value="5"><label for="q25-5" class="rounded-full">5</label>
                     </div>
                 </div>
@@ -599,7 +599,7 @@
             </div>
 
             <div class="button-group">
-                <button type="button" class="btn rounded-full" id="saveResultsBtn">Отримати та зберегти результати</button>
+                <button type="button" class="btn rounded-full" onclick="calculateAndSaveResults()">Отримати та зберегти результати</button>
             </div>
             <div id="saveMessage" class="message-box hidden"></div>
         </form>
@@ -627,14 +627,14 @@
         // Global variables provided by the environment
         const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
         const firebaseConfig = {
-  apiKey: "AIzaSyD86f9CcQYTZbZGGV3mx0rrZ_okVa3uPCI",
-  authDomain: "teacher-profile-quiz-data.firebaseapp.com",
-  projectId: "teacher-profile-quiz-data",
-  storageBucket: "teacher-profile-quiz-data.firebasestorage.app",
-  messagingSenderId: "915916470437",
-  appId: "1:915916470437:web:5f79b6a491ec208f08f54c",
-  measurementId: "G-LYNH4NQ8WP"
-};
+            apiKey: "AIzaSyD86f9CcQYTZBZGGV3mx0rrZ_okVa3uPCI",
+            authDomain: "teacher-profile-quiz-data.firebaseapp.com",
+            projectId: "teacher-profile-quiz-data",
+            storageBucket: "teacher-profile-quiz-data.firebasestorage.app",
+            messagingSenderId: "915916470437",
+            appId: "1:9159164790437:web:5f79b6a491ec208f08f54c",
+            measurementId: "G-LYNH4NQ8WP"
+        };
 
         // Firebase App and Services initialization
         const app = initializeApp(firebaseConfig);
@@ -673,6 +673,16 @@
             lowestRole: '',
             lowestScore: 5.1
         };
+
+        // ========================================================================
+        // >>> ВСТАВЛЯЄМО СЛУХАЧА ПОДІЙ ТУТ <<<
+        document.addEventListener('DOMContentLoaded', () => {
+            const saveBtn = document.getElementById('saveResultsBtn');
+            if (saveBtn) {
+                saveBtn.addEventListener('click', calculateAndSaveResults);
+            }
+        });
+        // ========================================================================
 
         /**
          * Fetches data with exponential backoff for retries.
@@ -764,180 +774,14 @@
             recommendationsBtn.style.display = 'none'; // Hide button initially
             saveMessage.classList.add('hidden'); // Hide previous save messages
 
-            quizResults = { // Reset global quizResults
-                totalScores: {},
-                aiLevels: {},
-                highestRole: '',
-                highestScore: -0.1,
-                lowestRole: '',
-                lowestScore: 5.1
-            };
+            // ... (решта вашого коду calculateAndSaveResults) ...
 
-            // Define the questions for each block
-            const blockQuestions = {
-                'Викладач': ['q1', 'q2', 'q3', 'q4', 'q5'],
-                'Ментор': ['q6', 'q7', 'q8', 'q9', 'q10'],
-                'Фасилітатор': ['q11', 'q12', 'q13', 'q14', 'q15'],
-                'Дизайнер': ['q16', 'q17', 'q18', 'q19', 'q20'],
-                'Новатор': ['q21', 'q22', 'q23', 'q24', 'q25']
-            };
-            
-            let allQuestionsAnswered = true;
-
-            // Calculate average for each block
-            Object.keys(blockQuestions).forEach((blockName, index) => {
-                const questionsInBlock = blockQuestions[blockName];
-                let sum = 0;
-                let answeredCount = 0;
-                questionsInBlock.forEach(qName => {
-                    const selectedOption = document.querySelector(`input[name="${qName}"]:checked`);
-                    if (selectedOption) {
-                        sum += parseInt(selectedOption.value);
-                        answeredCount++;
-                    }
-                });
-
-                // Check if all questions in the block were answered
-                if (answeredCount === questionsInBlock.length) {
-                    quizResults.totalScores[blockName] = (sum / questionsInBlock.length).toFixed(2);
-                } else {
-                    quizResults.totalScores[blockName] = 'Не всі питання блоку відповідено';
-                    allQuestionsAnswered = false;
-                }
-
-                // Get AI level for the block
-                const aiLevel = document.querySelector(`input[name="ai-level-${index + 1}"]:checked`);
-                if (aiLevel) {
-                    quizResults.aiLevels[blockName] = aiLevel.value;
-                } else {
-                    quizResults.aiLevels[blockName] = 'Не обрано';
-                    allQuestionsAnswered = false;
-                }
-            });
-
-            if (!allQuestionsAnswered) {
-                resultsDiv.innerHTML = '<p class="text-red-600 font-semibold">Будь ласка, дайте відповіді на всі питання та оберіть рівень ШІ у кожному блоці перед тим, як отримати результати.</p>';
-                document.getElementById('results').classList.remove('hidden');
-                document.getElementById('results').classList.add('block');
-                window.scrollTo(0, document.body.scrollHeight);
-                return;
-            }
-            
-            // Display results
-            let resultsHTML = '<h3>Профіль ролей</h3>';
-            
-            for (const role in quizResults.totalScores) {
-                resultsHTML += `<p><strong>${role}:</strong> Середній бал - ${quizResults.totalScores[role]}</p>`;
-                const score = parseFloat(quizResults.totalScores[role]);
-                // Only consider valid numbers for min/max
-                if (!isNaN(score)) {
-                    if (score < quizResults.lowestScore) {
-                        quizResults.lowestScore = score;
-                        quizResults.lowestRole = role;
-                    }
-                    if (score > quizResults.highestScore) {
-                        quizResults.highestScore = score;
-                        quizResults.highestRole = role;
-                    }
-                }
-            }
-
-            resultsHTML += '<br><h3>Інтерпретація</h3>';
-            if (quizResults.highestRole && quizResults.highestScore !== -0.1) {
-                resultsHTML += `<p>✅ <strong>Ваша сильна сторона:</strong> ${quizResults.highestRole} (бал: ${quizResults.highestScore}).</p>`;
-            } else {
-                 resultsHTML += `<p>Не вдалося визначити сильну сторону. Переконайтеся, що всі питання відповідено коректно.</p>`;
-            }
-            
-            if (quizResults.lowestRole && quizResults.lowestScore !== 5.1) {
-                resultsHTML += `<p>⚠️ <strong>Зона розвитку:</strong> ${quizResults.lowestRole} (бал: ${quizResults.lowestScore}).</p>`;
-            } else {
-                resultsHTML += `<p>Не вдалося визначити зону розвитку. Переконайтеся, що всі питання відповідено коректно.</p>`;
-            }
-
-            resultsHTML += '<br><h3>AI-зрілість</h3>';
-            for (const role in quizResults.aiLevels) {
-                let interpretation = '';
-                if (quizResults.aiLevels[role] === 'Ознайомлений') {
-                    interpretation = 'Вам будуть корисні **базові** тренінги, що знайомлять з основними інструментами та їх застосуванням.';
-                } else if (quizResults.aiLevels[role] === 'Системно інтегрую') {
-                    interpretation = 'Вам підійдуть **поглиблені** тренінги, що пропонують більш комплексні сценарії використання ШІ.';
-                } else if (quizResults.aiLevels[role] === 'Розробляю власні кейси') {
-                    interpretation = 'Ви можете брати участь у майстер-класах та дискусіях для обміну досвідом та розробки **інноваційних** підходів.';
-                } else {
-                    interpretation = 'Будь ласка, оберіть ваш рівень ШІ для цієї ролі.';
-                }
-                resultsHTML += `<p>👉 <strong>${role}:</strong> ${quizResults.aiLevels[role]}. <br>${interpretation}</p>`;
-            }
-
-            resultsDiv.innerHTML = resultsHTML;
-            document.getElementById('results').classList.remove('hidden');
-            document.getElementById('results').classList.add('block');
-            recommendationsBtn.style.display = 'block'; // Show the recommendations button
-            window.scrollTo(0, document.body.scrollHeight);
-
-            // Save results to Firestore after displaying them
-            await saveResultsToFirestore(quizResults);
+            // ... (кінець функції calculateAndSaveResults) ...
         }
 
         async function getGeminiRecommendations() {
-            const recommendationsContentDiv = document.getElementById('recommendations-content');
-            const recommendationsSection = document.getElementById('recommendations');
-            const getRecommendationsBtn = document.getElementById('getRecommendationsBtn');
-
-            recommendationsSection.classList.remove('hidden');
-            recommendationsContentDiv.innerHTML = '<p class="text-center text-gray-600">Генерую рекомендації... <span class="loading-spinner"></span></p>';
-            getRecommendationsBtn.disabled = true; // Disable button while loading
-
-            const lowestRoleAILevel = quizResults.aiLevels[quizResults.lowestRole];
-
-            const prompt = `На основі моїх результатів опитувальника "Мій профіль викладача цифрової доби":
-Моя сильна сторона: ${quizResults.highestRole} (середній бал: ${quizResults.highestScore}).
-Моя зона розвитку: ${quizResults.lowestRole} (середній бал: ${quizResults.lowestScore}).
-Мій рівень AI-зрілості для зони розвитку "${quizResults.lowestRole}": ${lowestRoleAILevel}.
-Мої рівні AI-зрілості по всіх ролях:
-Викладач: ${quizResults.aiLevels['Викладач']}
-Ментор: ${quizResults.aiLevels['Ментор']}
-Фасилітатор: ${quizResults.aiLevels['Фасилітатор']}
-Дизайнер: ${quizResults.aiLevels['Дизайнер']}
-Новатор: ${quizResults.aiLevels['Новатор']}
-
-Будь ласка, надайте персоналізовані рекомендації щодо розвитку моєї зони розвитку "${quizResults.lowestRole}", враховуючи мої сильні сторони та мій рівень AI-зрілості саме в цій ролі. Запропонуйте конкретні кроки або ресурси для покращення, а також типи тренінгів, які були б найбільш корисними, виходячи з моєї AI-зрілості в цій ролі. Відповідь має бути розгорнутою, але чіткою та структурованою, використовуючи марковані списки для кроків та ресурсів.`;
-
-            let chatHistory = [];
-            chatHistory.push({ role: "user", parts: [{ text: prompt }] });
-            const payload = { contents: chatHistory };
-            const apiKey = ""; // Canvas will automatically provide it
-            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
-
-            try {
-                const response = await exponentialBackoffFetch(apiUrl, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(payload)
-                });
-                const result = await response.json();
-                
-                if (result.candidates && result.candidates.length > 0 &&
-                    result.candidates[0].content && result.candidates[0].content.parts &&
-                    result.candidates[0].content.parts.length > 0) {
-                    const text = result.candidates[0].content.parts[0].text;
-                    recommendationsContentDiv.innerHTML = `<p>${text.replace(/\n/g, '<br>')}</p>`; // Basic formatting for newlines
-                } else {
-                    recommendationsContentDiv.innerHTML = '<p class="text-red-600">Не вдалося отримати рекомендації. Спробуйте ще раз.</p>';
-                    console.error('Unexpected Gemini API response structure:', result);
-                }
-            } catch (error) {
-                recommendationsContentDiv.innerHTML = '<p class="text-red-600">Помилка під час отримання рекомендацій: ' + error.message + '</p>';
-                console.error('Error calling Gemini API:', error);
-            } finally {
-                getRecommendationsBtn.disabled = false; // Re-enable button
-                window.scrollTo(0, document.body.scrollHeight); // Scroll to recommendations
-            }
+            // ... (ваш існуючий код getGeminiRecommendations) ...
         }
     </script>
 </body>
 </html>
-
-
-
