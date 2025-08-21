@@ -672,7 +672,7 @@
             '1': 'Не погоджуюся зовсім',
             '2': 'Частково погоджуюся',
             '3': 'Погоджуюся',
-            '4': 'Значною мірою погоджуюся', // Додано для повноти 5-бальної шкали
+            '4': 'Значною мірою погоджуюся', 
             '5': 'Повністю погоджуюся'
         };
 
@@ -847,10 +847,9 @@
             });
 
             if (!allQuestionsAnswered) {
-                resultsDiv.innerHTML = '<p class="text-red-600 font-semibold">Будь ласка, дайте відповіді на всі питання та оберіть рівень ШІ у кожному блоці перед тим, як отримати результати.</p>';
-                document.getElementById('results').classList.remove('hidden');
-                document.getElementById('results').classList.add('block');
-                window.scrollTo(0, document.body.scrollHeight);
+                showMessage("Будь ласка, дайте відповіді на всі питання та оберіть рівень ШІ у кожному блоці.", "error");
+                document.getElementById('results').classList.add('hidden'); // Ensure results section is hidden if incomplete
+                window.scrollTo(0, 0); // Scroll to top to make message more visible
                 return;
             }
             
@@ -913,7 +912,7 @@
 
         async function getGeminiRecommendations() {
             const recommendationsContentDiv = document.getElementById('recommendations-content');
-            const recommendationsSection = document.getElementById('recommendations');
+            const recommendationsSection = document = document.getElementById('recommendations');
             const getRecommendationsBtn = document.getElementById('getRecommendationsBtn');
 
             recommendationsSection.classList.remove('hidden');
@@ -938,7 +937,7 @@
             let chatHistory = [];
             chatHistory.push({ role: "user", parts: [{ text: prompt }] });
             const payload = { contents: chatHistory };
-            const apiKey = firebaseConfig.apiKey; // ВИПРАВЛЕНО: Тепер використовуємо дійсний API ключ з firebaseConfig
+            const apiKey = firebaseConfig.apiKey; 
             const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
 
             try {
