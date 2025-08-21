@@ -958,24 +958,37 @@
             recommendationsContentDiv.innerHTML = '<p class="text-center text-gray-600">Генерую рекомендації... <span class="loading-spinner"></span></p>';
             getRecommendationsBtn.disabled = true; // Disable button while loading
 
-            const lowestRoleAILevel = quizResults.aiLevels[quizResults.lowestRole];
+            let promptParts = [];
+            promptParts.push(`Ви - експерт з цифрової трансформації освіти, який надає персоналізовані рекомендації для викладачів. Ваша мета – запропонувати **конкретні, дієві кроки та ресурси** для розвитку AI-зрілості викладачів.
+            
+На основі результатів опитувальника, надайте розгорнуті рекомендації для **кожної ролі** викладача, враховуючи вказаний рівень AI-зрілості для цієї конкретної ролі.
 
-            // If multiple roles have the lowest score, select the first one for the prompt to Gemini for simplicity
-            const promptLowestRole = quizResults.lowestRole;
-            const promptHighestRole = quizResults.highestRole;
+Використовуйте наступну структуру для рекомендацій по кожній ролі:
+### [Назва Ролі] (Рівень AI-зрілості: [Рівень])
+* **Для рівня "Ознайомлений(а) з інструментами":**
+    * [1-2 конкретні, базові кроки, наприклад: "Ознайомтесь з Google Docs AI для автоматичного узагальнення текстів." або "Пройдіть вступний онлайн-курс з основ ШІ."]
+    * [1-2 конкретні ресурси, наприклад: "Серія вебінарів «ШІ для початківців в освіті»."]
+* **Для рівня "Системно інтегрую в практику":**
+    * [1-2 конкретні, середні кроки, наприклад: "Інтегруйте AI-інструменти (наприклад, ChatGPT для мозкового штурму) в підготовку лекцій та практичних завдань."]
+    * [1-2 конкретні ресурси, наприклад: "Практичний посібник «Розширені сценарії використання ШІ в педагогіці»."]
+* **Для рівня "Розробляю власні кейси/методики з ШІ":**
+    * [1-2 конкретні, просунуті кроки, наприклад: "Розробіть власний навчальний кейс з використанням генеративних моделей ШІ для симуляції складних ситуацій."]
+    * [1-2 конкретні ресурси, наприклад: "Участь у хакатонах з освітніх технологій або наукових конференціях з AI в освіті."]
 
-            const prompt = `На основі моїх результатів опитувальника "Мій профіль викладача цифрової доби":
-Моя сильна сторона: ${promptHighestRole} (середній бал: ${quizResults.highestScore}).
-Моя зона розвитку: ${promptLowestRole} (середній бал: ${quizResults.lowestScore}).
-Мій рівень AI-зрілості для зони розвитку "${promptLowestRole}": ${lowestRoleAILevel}.
-Мої рівні AI-зрілості по всіх ролях:
-Викладач: ${quizResults.aiLevels['Викладач (передача знань)']}
-Ментор: ${quizResults.aiLevels['Ментор (підтримка студентів)']}
-Фасилітатор: ${quizResults.aiLevels['Фасилітатор (групове навчання)']}
-Дизайнер: ${quizResults.aiLevels['Дизайнер навчального середовища']}
-Новатор: ${quizResults.aiLevels['Новатор (нові траєкторії навчання)']}
+Ось мої результати:
+`);
 
-Будь ласка, надайте персоналізовані рекомендації щодо розвитку моєї зони розвитку "${promptLowestRole}", враховуючи мої сильні сторони та мій рівень AI-зрілості саме в цій ролі. Запропонуйте конкретні кроки або ресурси для покращення, а також типи тренінгів, які були б найбільш корисними, виходячи з моєї AI-зрілості в цій ролі. Відповідь має бути розгорнутою, але чіткою та структурованою, використовуючи марковані списки для кроків та ресурсів.`;
+            for (const role in quizResults.aiLevels) {
+                promptParts.push(`- **${role}:** ${quizResults.aiLevels[role]}`);
+            }
+
+            promptParts.push(`
+Окремо, врахуйте мої загальні сильні сторони та зони розвитку:
+Моя сильна сторона: ${quizResults.highestRole} (середній бал: ${quizResults.highestScore}).
+Моя зона розвитку: ${quizResults.lowestRole} (середній бал: ${quizResults.lowestScore}).
+`);
+            
+            const prompt = promptParts.join('\n');
 
             let chatHistory = [];
             chatHistory.push({ role: "user", parts: [{ text: prompt }] });
@@ -995,7 +1008,7 @@
                     result.candidates[0].content && result.candidates[0].content.parts &&
                     result.candidates[0].content.parts.length > 0) {
                     const text = result.candidates[0].content.parts[0].text;
-                    recommendationsContentDiv.innerHTML = `<p>${text.replace(/\n/g, '<br>')}</p>`; // Basic formatting for newlines
+                    recommendationsContentDiv.innerHTML = text.replace(/\n/g, '<br>'); // Gemini повертає Markdown, тому замінюємо \n на <br>
                 } else {
                     recommendationsContentDiv.innerHTML = '<p class="text-red-600">Не вдалося отримати рекомендації. Спробуйте ще раз.</p>';
                     console.error('Unexpected Gemini API response structure:', result);
@@ -1008,7 +1021,7 @@
                     window.scrollTo(0, document.body.scrollHeight); // Scroll to recommendations
                 }
             }
+        }
     </script>
 </body>
 </html>
-
