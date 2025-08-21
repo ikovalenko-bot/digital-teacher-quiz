@@ -284,19 +284,26 @@
 
         <div class="instruction rounded-lg">
             <p class="font-semibold text-lg mb-2"><strong>Інструкція для учасників</strong></p>
-            <p>Відповідайте на твердження за шкалою від 1 до 5: <strong>1 – зовсім не згоден(на)</strong>, <strong>5 – повністю згоден(на)</strong>.</p> 
-            <p>Після кожного блоку позначте свій рівень роботи з ШІ у цій ролі.</p>
+            <p>Відповідайте на твердження за шкалою від 1 до 5:</p>
             <ul class="list-disc pl-5 mt-3">
-                <li><strong>Ознайомлений(а) з інструментами:</strong> Ви знаєте про існування ШІ-інструментів і можете їх використовувати для базових завдань.</li>
-                <li><strong>Системно інтегрую в практику:</strong> Ви регулярно використовуєте ШІ для досягнення дидактичних цілей, він є невід'ємною частиною вашої роботи.</li>
-                <li><strong>Розробляю власні кейси/методики з ШІ:</strong> Ви не просто використовуєте ШІ, а створюєте власні унікальні підходи та сценарії його застосування.</li>
+                <li>**1 – Не погоджуюся зовсім**</li>
+                <li>**2 – Частково погоджуюся**</li>
+                <li>**3 – Погоджуюся**</li>
+                <li>**4 – Значною мірою погоджуюся**</li>
+                <li>**5 – Повністю погоджуюся**</li>
+            </ul>
+            <p class="mt-3">Після кожного блоку позначте свій рівень роботи з ШІ у цій ролі:</p>
+            <ul class="list-disc pl-5 mt-3">
+                <li>**Ознайомлений(а) з інструментами:** Ви знаєте про існування AI-інструментів і можете їх використовувати для базових завдань.</li>
+                <li>**Системно інтегрую в практику:** Ви регулярно використовуєте ШІ для досягнення дидактичних цілей, він є невід'ємною частиною вашої роботи.</li>
+                <li>**Розробляю власні кейси/методики з ШІ:** Ви не просто використовуєте ШІ, а створюєте власні унікальні підходи та сценарії його застосування.</li>
             </ul>
         </div>
 
         <form id="quizForm">
-            <!-- Блок 1. Викладач -->
+            <!-- Блок 1. Викладач (передача знань) -->
             <div class="block">
-                <h2>Блок 1. Викладач</h2>
+                <h2>Блок 1. Викладач (передача знань)</h2>
                 <div class="question">
                     <p>1. Я розумію, як ШІ може підтримати викладання у моїй дисципліні.</p>
                     <div class="rating-scale">
@@ -318,7 +325,7 @@
                     </div>
                 </div>
                 <div class="question">
-                    <p>3. Я інтегрую інструменти ШІ у створення матеріалів (презентацій, прикладів, вправ тощо).</p>
+                    <p>3. Я інтегрую інструменти ШІ у створення матеріалів (презентацій, прикладів, вправ).</p>
                     <div class="rating-scale">
                         <input type="radio" id="q3-1" name="q3" value="1"><label for="q3-1" class="rounded-full">1</label>
                         <input type="radio" id="q3-2" name="q3" value="2"><label for="q3-2" class="rounded-full">2</label>
@@ -348,16 +355,16 @@
                     </div>
                 </div>
                 <div class="ai-level">
-                    <p><strong>Ваш рівень у цій ролі:</strong></p>
-                    <label class="rounded-lg"><input type="radio" name="ai-level-1" value="Ознайомлений"> Ознайомлений з ШІ-інструментами</label>
-                    <label class="rounded-lg"><input type="radio" name="ai-level-1" value="Системно інтегрую"> Системно інтегрую ШІ-інструменти в практику</label>
+                    <p><strong>Ваш рівень AI-зрілості у цій ролі:</strong></p>
+                    <label class="rounded-lg"><input type="radio" name="ai-level-1" value="Ознайомлений"> Ознайомлений(а) з інструментами</label>
+                    <label class="rounded-lg"><input type="radio" name="ai-level-1" value="Системно інтегрую"> Системно інтегрую в практику</label>
                     <label class="rounded-lg"><input type="radio" name="ai-level-1" value="Розробляю власні кейси"> Розробляю власні кейси/методики з ШІ</label>
                 </div>
             </div>
 
-            <!-- Блок 2. Ментор -->
+            <!-- Блок 2. Ментор (підтримка студентів) -->
             <div class="block">
-                <h2>Блок 2. Ментор</h2>
+                <h2>Блок 2. Ментор (підтримка студентів)</h2>
                 <div class="question">
                     <p>1. Я розумію, як ШІ може допомогти в індивідуальній підтримці студентів.</p>
                     <div class="rating-scale">
@@ -409,16 +416,16 @@
                     </div>
                 </div>
                 <div class="ai-level">
-                    <p><strong>Ваш рівень у цій ролі:</strong></p>
-                    <label class="rounded-lg"><input type="radio" name="ai-level-2" value="Ознайомлений"> Ознайомлений з інструментами</label>
+                    <p><strong>Ваш рівень AI-зрілості у цій ролі:</strong></p>
+                    <label class="rounded-lg"><input type="radio" name="ai-level-2" value="Ознайомлений"> Ознайомлений(а) з інструментами</label>
                     <label class="rounded-lg"><input type="radio" name="ai-level-2" value="Системно інтегрую"> Системно інтегрую в практику</label>
                     <label class="rounded-lg"><input type="radio" name="ai-level-2" value="Розробляю власні кейси"> Розробляю власні кейси/методики з ШІ</label>
                 </div>
             </div>
             
-            <!-- Блок 3. Фасилітатор -->
+            <!-- Блок 3. Фасилітатор (групове навчання) -->
             <div class="block">
-                <h2>Блок 3. Фасилітатор</h2>
+                <h2>Блок 3. Фасилітатор (групове навчання)</h2>
                 <div class="question">
                     <p>1. Я розумію, як ШІ може підтримати групову роботу та обговорення.</p>
                     <div class="rating-scale">
@@ -470,16 +477,16 @@
                     </div>
                 </div>
                 <div class="ai-level">
-                    <p><strong>Ваш рівень у цій ролі:</strong></p>
-                    <label class="rounded-lg"><input type="radio" name="ai-level-3" value="Ознайомлений"> Ознайомлений з інструментами</label>
+                    <p><strong>Ваш рівень AI-зрілості у цій ролі:</strong></p>
+                    <label class="rounded-lg"><input type="radio" name="ai-level-3" value="Ознайомлений"> Ознайомлений(а) з інструментами</label>
                     <label class="rounded-lg"><input type="radio" name="ai-level-3" value="Системно інтегрую"> Системно інтегрую в практику</label>
                     <label class="rounded-lg"><input type="radio" name="ai-level-3" value="Розробляю власні кейси"> Розробляю власні кейси/методики з ШІ</label>
                 </div>
             </div>
 
-            <!-- Блок 4. Дизайнер -->
+            <!-- Блок 4. Дизайнер навчального середовища -->
             <div class="block">
-                <h2>Блок 4. Дизайнер</h2>
+                <h2>Блок 4. Дизайнер навчального середовища</h2>
                 <div class="question">
                     <p>1. Я розумію, як ШІ може допомогти у створенні навчальних середовищ.</p>
                     <div class="rating-scale">
@@ -531,16 +538,16 @@
                     </div>
                 </div>
                 <div class="ai-level">
-                    <p><strong>Ваш рівень у цій ролі:</strong></p>
-                    <label class="rounded-lg"><input type="radio" name="ai-level-4" value="Ознайомлений"> Ознайомлений з інструментами</label>
+                    <p><strong>Ваш рівень AI-зрілості у цій ролі:</strong></p>
+                    <label class="rounded-lg"><input type="radio" name="ai-level-4" value="Ознайомлений"> Ознайомлений(а) з інструментами</label>
                     <label class="rounded-lg"><input type="radio" name="ai-level-4" value="Системно інтегрую"> Системно інтегрую в практику</label>
                     <label class="rounded-lg"><input type="radio" name="ai-level-4" value="Розробляю власні кейси"> Розробляю власні кейси/методики з ШІ</label>
                 </div>
             </div>
 
-            <!-- Блок 5. Новатор -->
+            <!-- Блок 5. Новатор (нові траєкторії навчання) -->
             <div class="block">
-                <h2>Блок 5. Новатор</h2>
+                <h2>Блок 5. Новатор (нові траєкторії навчання)</h2>
                 <div class="question">
                     <p>1. Я розумію, як ШІ відкриває нові можливості для викладання.</p>
                     <div class="rating-scale">
@@ -587,13 +594,13 @@
                         <input type="radio" id="q25-1" name="q25" value="1"><label for="q25-1" class="rounded-full">1</label>
                         <input type="radio" id="q25-2" name="q25" value="2"><label for="q25-2" class="rounded-full">2</label>
                         <input type="radio" id="q25-3" name="q25" value="3"><label for="q25-3" class="rounded-full">3</label>
-                        <input type="radio" id="q25-4" name="q24" value="4"><label for="q24-4" class="rounded-full">4</label>
+                        <input type="radio" id="q25-4" name="q25" value="4"><label for="q25-4" class="rounded-full">4</label>
                         <input type="radio" id="q25-5" name="q25" value="5"><label for="q25-5" class="rounded-full">5</label>
                     </div>
                 </div>
                 <div class="ai-level">
-                    <p><strong>Ваш рівень у цій ролі:</strong></p>
-                    <label class="rounded-lg"><input type="radio" name="ai-level-5" value="Ознайомлений"> Ознайомлений з інструментами</label>
+                    <p><strong>Ваш рівень AI-зрілості у цій ролі:</strong></p>
+                    <label class="rounded-lg"><input type="radio" name="ai-level-5" value="Ознайомлений"> Ознайомлений(а) з інструментами</label>
                     <label class="rounded-lg"><input type="radio" name="ai-level-5" value="Системно інтегрую"> Системно інтегрую в практику</label>
                     <label class="rounded-lg"><input type="radio" name="ai-level-5" value="Розробляю власні кейси"> Розробляю власні кейси/методики з ШІ</label>
                 </div>
@@ -628,7 +635,7 @@
     <script>
         // Глобальні змінні (заповніть ВАШИМИ ДАНИМИ З FIREBASE CONSOLE)
         const firebaseConfig = {
-            apiKey: "AIzaSyD_Bup-l5om_iKApapwK2heV7nPSad_aqQ", // <-- ПЕРЕКОНАЙТЕСЬ, ЩО ЦЕ ВАШ АКТУАЛЬНИЙ КЛЮЧ
+            apiKey: "AIzaSyD86f9CcQYTZBZGGV3mx0rrZ_oKVas3uPCI", // <-- ПЕРЕКОНАЙТЕСЬ, ЩО ЦЕ ВАШ АКТУАЛЬНИЙ КЛЮЧ
             authDomain: "teacher-profile-quiz-data.firebaseapp.com",
             projectId: "teacher-profile-quiz-data",
             storageBucket: "teacher-profile-quiz-data.firebasestorage.app",
@@ -660,6 +667,15 @@
             document.getElementById('userIdDisplay').textContent = `Ваш ID: ${currentUserId}`;
         });
 
+        // Мітки для шкали оцінювання
+        const SCALE_LABELS = {
+            '1': 'Не погоджуюся зовсім',
+            '2': 'Частково погоджуюся',
+            '3': 'Погоджуюся',
+            '4': 'Значною мірою погоджуюся', 
+            '5': 'Повністю погоджуюся'
+        };
+
         // Глобальні змінні для зберігання результатів опитувальника
         let quizResults = {
             totalScores: {},
@@ -676,6 +692,14 @@
             const saveBtn = document.getElementById('saveResultsBtn');
             if (saveBtn) {
                 saveBtn.addEventListener('click', calculateAndSaveResults);
+
+                // Оновлення міток шкали для всіх питань
+                document.querySelectorAll('.rating-scale').forEach(scaleDiv => {
+                    scaleDiv.querySelectorAll('label').forEach(label => {
+                        const value = label.getAttribute('for').split('-').pop();
+                        label.textContent = value; // Встановлюємо числове значення як мітку за замовчуванням
+                    });
+                });
             }
         });
         // ========================================================================
@@ -742,7 +766,7 @@
             }
             try {
                 // Using a public collection for all teacher submissions
-                // Примітка: appId має бути вашим Project ID з Firebase Console.
+                // Примітка: projectId використовується для формування шляху колекції
                 const collectionPath = `artifacts/${firebaseConfig.projectId}/public/data/teacher_quiz_results`;
                 const docRef = await db.collection(collectionPath).add({ // Використовуємо db.collection() для compat версії
                     timestamp: new Date().toISOString(),
@@ -782,11 +806,11 @@
 
             // Define the questions for each block
             const blockQuestions = {
-                'Викладач': ['q1', 'q2', 'q3', 'q4', 'q5'],
-                'Ментор': ['q6', 'q7', 'q8', 'q9', 'q10'],
-                'Фасилітатор': ['q11', 'q12', 'q13', 'q14', 'q15'],
-                'Дизайнер': ['q16', 'q17', 'q18', 'q19', 'q20'],
-                'Новатор': ['q21', 'q22', 'q23', 'q24', 'q25']
+                'Викладач (передача знань)': ['q1', 'q2', 'q3', 'q4', 'q5'],
+                'Ментор (підтримка студентів)': ['q6', 'q7', 'q8', 'q9', 'q10'],
+                'Фасилітатор (групове навчання)': ['q11', 'q12', 'q13', 'q14', 'q15'],
+                'Дизайнер навчального середовища': ['q16', 'q17', 'q18', 'q19', 'q20'],
+                'Новатор (нові траєкторії навчання)': ['q21', 'q22', 'q23', 'q24', 'q25']
             };
             
             let allQuestionsAnswered = true;
@@ -823,43 +847,64 @@
             });
 
             if (!allQuestionsAnswered) {
-                resultsDiv.innerHTML = '<p class="text-red-600 font-semibold">Будь ласка, дайте відповіді на всі питання та оберіть рівень ШІ у кожному блоці перед тим, як отримати результати.</p>';
-                document.getElementById('results').classList.remove('hidden');
-                document.getElementById('results').classList.add('block');
-                window.scrollTo(0, document.body.scrollHeight);
+                showMessage("Будь ласка, дайте відповіді на всі питання та оберіть рівень ШІ у кожному блоці.", "error");
+                document.getElementById('results').classList.add('hidden'); // Ensure results section is hidden if incomplete
+                window.scrollTo(0, 0); // Scroll to top to make message more visible
                 return;
             }
             
+            // --- НОВА ЛОГІКА ДЛЯ КІЛЬКОХ СИЛЬНИХ СТОРІН / ЗОН РОЗВИТКУ ---
+            let minScore = 5.1; // Initialize with a value higher than max possible score (5)
+            let maxScore = -0.1; // Initialize with a value lower than min possible score (1)
+            let strongestSides = [];
+            let developmentAreas = [];
+
+            // Find min and max scores among all *valid* totalScores
+            for (const role in quizResults.totalScores) {
+                const score = parseFloat(quizResults.totalScores[role]);
+                if (!isNaN(score)) {
+                    if (score < minScore) {
+                        minScore = score;
+                    }
+                    if (score > maxScore) {
+                        maxScore = score;
+                    }
+                }
+            }
+
+            // Collect all roles that match min/max scores
+            for (const role in quizResults.totalScores) {
+                const score = parseFloat(quizResults.totalScores[role]);
+                if (!isNaN(score)) {
+                    if (score === maxScore) {
+                        strongestSides.push(`${role} (бал: ${score})`);
+                    }
+                    if (score === minScore) {
+                        developmentAreas.push(`${role} (бал: ${score})`);
+                    }
+                }
+            }
+            // --- КІНЕЦЬ НОВОЇ ЛОГІКИ ---
+
+
             // Display results
             let resultsHTML = '<h3>Профіль ролей</h3>';
             
             for (const role in quizResults.totalScores) {
                 resultsHTML += `<p><strong>${role}:</strong> Середній бал - ${quizResults.totalScores[role]}</p>`;
-                const score = parseFloat(quizResults.totalScores[role]);
-                // Only consider valid numbers for min/max
-                if (!isNaN(score)) {
-                    if (score < quizResults.lowestScore) {
-                        quizResults.lowestScore = score;
-                        quizResults.lowestRole = role;
-                    }
-                    if (score > quizResults.highestScore) {
-                        quizResults.highestScore = score; 
-                        quizResults.highestRole = role;
-                    }
-                }
             }
 
             resultsHTML += '<br><h3>Інтерпретація</h3>';
-            if (quizResults.highestRole && quizResults.highestScore !== -0.1) {
-                resultsHTML += `<p>✅ <strong>Ваша сильна сторона:</strong> ${quizResults.highestRole} (бал: ${quizResults.highestScore}).</p>`;
+            if (strongestSides.length > 0) {
+                resultsHTML += `<p>✅ <strong>Ваша сильна сторона:</strong> ${strongestSides.join(', ')}.</p>`;
             } else {
-                 resultsHTML += `<p>Не вдалося визначити сильну сторону. Переконайтеся, що всі питання відповідено коректно.</p>`;
+                 resultsHTML += `<p>Не вдалося визначити сильні сторони. Переконайтеся, що всі питання відповідено коректно.</p>`;
             }
             
-            if (quizResults.lowestRole && quizResults.lowestScore !== 5.1) {
-                resultsHTML += `<p>⚠️ <strong>Зона розвитку:</strong> ${quizResults.lowestRole} (бал: ${quizResults.lowestScore}).</p>`;
+            if (developmentAreas.length > 0) {
+                resultsHTML += `<p>⚠️ <strong>Зона розвитку:</strong> ${developmentAreas.join(', ')}.</p>`;
             } else {
-                resultsHTML += `<p>Не вдалося визначити зону розвитку. Переконайтеся, що всі питання відповідено коректно.</p>`;
+                resultsHTML += `<p>Не вдалося визначити зони розвитку. Переконайтеся, що всі питання відповідено коректно.</p>`;
             }
 
             resultsHTML += '<br><h3>AI-зрілість</h3>';
@@ -883,13 +928,22 @@
             recommendationsBtn.style.display = 'block'; // Show the recommendations button
             window.scrollTo(0, document.body.scrollHeight);
 
+            // Update quizResults for Gemini prompt before saving and calling Gemini
+            // For Gemini, we'll send the *first* strongest/lowest role for simplicity in the prompt.
+            // Gemini's response is a single block of text, making it harder to tailor for multiple roles simultaneously.
+            quizResults.highestRole = strongestSides.length > 0 ? strongestSides[0].split(' (бал:')[0] : '';
+            quizResults.highestScore = strongestSides.length > 0 ? parseFloat(strongestSides[0].split(' (бал: ')[1].replace(')', '')) : -0.1;
+            quizResults.lowestRole = developmentAreas.length > 0 ? developmentAreas[0].split(' (бал:')[0] : '';
+            quizResults.lowestScore = developmentAreas.length > 0 ? parseFloat(developmentAreas[0].split(' (бал: ')[1].replace(')', '')) : 5.1;
+
+
             // Save results to Firestore after displaying them
             await saveResultsToFirestore(quizResults);
         }
 
         async function getGeminiRecommendations() {
             const recommendationsContentDiv = document.getElementById('recommendations-content');
-            const recommendationsSection = document.getElementById('recommendations');
+            const recommendationsSection = document.getElementById('recommendations'); // Corrected variable name
             const getRecommendationsBtn = document.getElementById('getRecommendationsBtn');
 
             recommendationsSection.classList.remove('hidden');
@@ -898,23 +952,27 @@
 
             const lowestRoleAILevel = quizResults.aiLevels[quizResults.lowestRole];
 
-            const prompt = `На основі моїх результатів опитувальника "Мій профіль викладача цифрової доби":
-Моя сильна сторона: ${quizResults.highestRole} (середній бал: ${quizResults.highestScore}).
-Моя зона розвитку: ${quizResults.lowestRole} (середній бал: ${quizResults.lowestScore}).
-Мій рівень AI-зрілості для зони розвитку "${quizResults.lowestRole}": ${lowestRoleAILevel}.
-Мої рівні AI-зрілості по всіх ролях:
-Викладач: ${quizResults.aiLevels['Викладач']}
-Ментор: ${quizResults.aiLevels['Ментор']}
-Фасилітатор: ${quizResults.aiLevels['Фасилітатор']}
-Дизайнер: ${quizResults.aiLevels['Дизайнер']}
-Новатор: ${quizResults.aiLevels['Новатор']}
+            // If multiple roles have the lowest score, select the first one for the prompt to Gemini for simplicity
+            const promptLowestRole = quizResults.lowestRole;
+            const promptHighestRole = quizResults.highestRole;
 
-Будь ласка, надайте персоналізовані рекомендації щодо розвитку моєї зони розвитку "${quizResults.lowestRole}", враховуючи мої сильні сторони та мій рівень AI-зрілості саме в цій ролі. Запропонуйте конкретні кроки або ресурси для покращення, а також типи тренінгів, які були б найбільш корисними, виходячи з моєї AI-зрілості в цій ролі. Відповідь має бути розгорнутою, але чіткою та структурованою, використовуючи марковані списки для кроків та ресурсів.`;
+            const prompt = `На основі моїх результатів опитувальника "Мій профіль викладача цифрової доби":
+Моя сильна сторона: ${promptHighestRole} (середній бал: ${quizResults.highestScore}).
+Моя зона розвитку: ${promptLowestRole} (середній бал: ${quizResults.lowestScore}).
+Мій рівень AI-зрілості для зони розвитку "${promptLowestRole}": ${lowestRoleAILevel}.
+Мої рівні AI-зрілості по всіх ролях:
+Викладач: ${quizResults.aiLevels['Викладач (передача знань)']}
+Ментор: ${quizResults.aiLevels['Ментор (підтримка студентів)']}
+Фасилітатор: ${quizResults.aiLevels['Фасилітатор (групове навчання)']}
+Дизайнер: ${quizResults.aiLevels['Дизайнер навчального середовища']}
+Новатор: ${quizResults.aiLevels['Новатор (нові траєкторії навчання)']}
+
+Будь ласка, надайте персоналізовані рекомендації щодо розвитку моєї зони розвитку "${promptLowestRole}", враховуючи мої сильні сторони та мій рівень AI-зрілості саме в цій ролі. Запропонуйте конкретні кроки або ресурси для покращення, а також типи тренінгів, які були б найбільш корисними, виходячи з моєї AI-зрілості в цій ролі. Відповідь має бути розгорнутою, але чіткою та структурованою, використовуючи марковані списки для кроків та ресурсів.`;
 
             let chatHistory = [];
             chatHistory.push({ role: "user", parts: [{ text: prompt }] });
             const payload = { contents: chatHistory };
-            const apiKey = firebaseConfig.apiKey; // <-- ВИПРАВЛЕНО: Використовуємо API ключ з firebaseConfig
+            const apiKey = firebaseConfig.apiKey; 
             const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
 
             try {
@@ -942,7 +1000,7 @@
                     window.scrollTo(0, document.body.scrollHeight); // Scroll to recommendations
                 }
             }
-        </script>
-    </body>
-    </html>
-
+        }
+    </script>
+</body>
+</html>
