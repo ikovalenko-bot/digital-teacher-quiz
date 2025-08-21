@@ -416,7 +416,7 @@
                     </div>
                 </div>
                 <div class="ai-level">
-                    <p><strong>Ваш рівень AI-зрілості у цій ролі:</strong></p>
+                    <p><strong>Ваш рівень ШІ-зрілості у цій ролі:</strong></p>
                     <label class="rounded-lg"><input type="radio" name="ai-level-2" value="Ознайомлений"> Ознайомлений(а) з інструментами</label>
                     <label class="rounded-lg"><input type="radio" name="ai-level-2" value="Системно інтегрую"> Системно інтегрую в практику</label>
                     <label class="rounded-lg"><input type="radio" name="ai-level-2" value="Розробляю власні кейси"> Розробляю власні кейси/методики з ШІ</label>
@@ -477,7 +477,7 @@
                     </div>
                 </div>
                 <div class="ai-level">
-                    <p><strong>Ваш рівень AI-зрілості у цій ролі:</strong></p>
+                    <p><strong>Ваш рівень ШІ-зрілості у цій ролі:</strong></p>
                     <label class="rounded-lg"><input type="radio" name="ai-level-3" value="Ознайомлений"> Ознайомлений(а) з інструментами</label>
                     <label class="rounded-lg"><input type="radio" name="ai-level-3" value="Системно інтегрую"> Системно інтегрую в практику</label>
                     <label class="rounded-lg"><input type="radio" name="ai-level-3" value="Розробляю власні кейси"> Розробляю власні кейси/методики з ШІ</label>
@@ -538,7 +538,7 @@
                     </div>
                 </div>
                 <div class="ai-level">
-                    <p><strong>Ваш рівень AI-зрілості у цій ролі:</strong></p>
+                    <p><strong>Ваш рівень ШІ-зрілості у цій ролі:</strong></p>
                     <label class="rounded-lg"><input type="radio" name="ai-level-4" value="Ознайомлений"> Ознайомлений(а) з інструментами</label>
                     <label class="rounded-lg"><input type="radio" name="ai-level-4" value="Системно інтегрую"> Системно інтегрую в практику</label>
                     <label class="rounded-lg"><input type="radio" name="ai-level-4" value="Розробляю власні кейси"> Розробляю власні кейси/методики з ШІ</label>
@@ -599,7 +599,7 @@
                     </div>
                 </div>
                 <div class="ai-level">
-                    <p><strong>Ваш рівень AI-зрілості у цій ролі:</strong></p>
+                    <p><strong>Ваш рівень ШІ-зрілості у цій ролі:</strong></p>
                     <label class="rounded-lg"><input type="radio" name="ai-level-5" value="Ознайомлений"> Ознайомлений(а) з інструментами</label>
                     <label class="rounded-lg"><input type="radio" name="ai-level-5" value="Системно інтегрую"> Системно інтегрую в практику</label>
                     <label class="rounded-lg"><input type="radio" name="ai-level-5" value="Розробляю власні кейси"> Розробляю власні кейси/методики з ШІ</label>
@@ -915,15 +915,15 @@
                 resultsHTML += `<p>Не вдалося визначити зони розвитку. Переконайтеся, що всі питання відповідено коректно.</p>`;
             }
 
-            resultsHTML += '<br><h3>AI-зрілість</h3>';
+            resultsHTML += '<br><h3>ШІ-зрілість</h3>';
             for (const role in quizResults.aiLevels) {
                 let interpretation = '';
                 if (quizResults.aiLevels[role] === 'Ознайомлений') {
-                    interpretation = 'Вам будуть корисні **базові** тренінги, що знайомлять з основними інструментами та їх застосуванням.';
+                    interpretation = 'Рекомендуємо тренінги для ознайомлення з основними інструментами ШІ та їх практичним використанням.';
                 } else if (quizResults.aiLevels[role] === 'Системно інтегрую') {
-                    interpretation = 'Вам підійдуть **поглиблені** тренінги, що пропонують більш комплексні сценарії використання ШІ.';
+                    interpretation = 'Підходять поглиблені тренінги з комплексними сценаріями застосування ШІ у навчальному процесі.';
                 } else if (quizResults.aiLevels[role] === 'Розробляю власні кейси') {
-                    interpretation = 'Ви можете брати участь у майстер-класах та дискусіях для обміну досвідом та розробки **інноваційних** підходів.';
+                    interpretation = 'Корисні майстер-класи та дискусії для обміну досвідом та створення інноваційних підходів.';
                 } else {
                     interpretation = 'Будь ласка, оберіть ваш рівень ШІ для цієї ролі.';
                 }
@@ -964,7 +964,7 @@
 На основі результатів опитувальника, надайте розгорнуті рекомендації для **кожної ролі** викладача, враховуючи вказаний рівень AI-зрілості для цієї конкретної ролі.
 
 Використовуйте наступну структуру для рекомендацій по кожній ролі:
-### [Назва Ролі] (Рівень AI-зрілості: [Рівень])
+### [Назва Ролі] (Рівень ШІ-зрілості: [Рівень])
 * **Для рівня "Ознайомлений(а) з інструментами":**
     * [1-2 конкретні, базові кроки, наприклад: "Ознайомтесь з Google Docs AI для автоматичного узагальнення текстів." або "Пройдіть вступний онлайн-курс з основ ШІ."]
     * [1-2 конкретні ресурси, наприклад: "Серія вебінарів «ШІ для початківців в освіті»."]
@@ -1024,4 +1024,5 @@
     </script>
 </body>
 </html>
+
 
