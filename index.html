@@ -284,28 +284,21 @@
 
         <div class="instruction rounded-lg">
             <p class="font-semibold text-lg mb-2"><strong>Інструкція для учасників</strong></p>
-            <p>Відповідайте на твердження за шкалою від 1 до 5:</p>
+            <p>Відповідайте на твердження за шкалою від 1 до 5: <strong>1 – зовсім не згоден(на)</strong>, <strong>5 – повністю згоден(на)</strong>.</p> 
+            <p>Після кожного блоку позначте свій рівень роботи з ШІ у цій ролі.</p>
             <ul class="list-disc pl-5 mt-3">
-                <li>**1 – Не погоджуюся зовсім**</li>
-                <li>**2 – Частково погоджуюся**</li>
-                <li>**3 – Погоджуюся**</li>
-                <li>**4 – Значною мірою погоджуюся**</li>
-                <li>**5 – Повністю погоджуюся**</li>
-            </ul>
-            <p class="mt-3">Після кожного блоку позначте свій рівень роботи з ШІ у цій ролі:</p>
-            <ul class="list-disc pl-5 mt-3">
-                <li>**Ознайомлений(а) з інструментами:** Ви знаєте про існування AI-інструментів і можете їх використовувати для базових завдань.</li>
-                <li>**Системно інтегрую в практику:** Ви регулярно використовуєте ШІ для досягнення дидактичних цілей, він є невід'ємною частиною вашої роботи.</li>
-                <li>**Розробляю власні кейси/методики з ШІ:** Ви не просто використовуєте ШІ, а створюєте власні унікальні підходи та сценарії його застосування.</li>
+                <li><strong>Ознайомлений(а) з інструментами:</strong> Ви знаєте про існування ШІ-інструментів і можете їх використовувати для базових завдань.</li>
+                <li><strong>Системно інтегрую в практику:</strong> Ви регулярно використовуєте ШІ для досягнення дидактичних цілей, він є невід'ємною частиною вашої роботи.</li>
+                <li><strong>Розробляю власні кейси/методики з ШІ:</strong> Ви не просто використовуєте ШІ, а створюєте власні унікальні підходи та сценарії його застосування.</li>
             </ul>
         </div>
 
         <form id="quizForm">
-            <!-- Блок 1. Викладач (передача знань) -->
+            <!-- Блок 1. Викладач -->
             <div class="block">
-                <h2>Блок 1. Викладач (передача знань)</h2>
+                <h2>Блок 1. Викладач</h2>
                 <div class="question">
-                    <p>1. Я розумію, як ШІ може підтримати викладання у моїй дисципліні.</p>
+                    <p>1. Я адаптую пояснення складних понять за допомогою ШІ (візуалізації, приклади).</p>
                     <div class="rating-scale">
                         <input type="radio" id="q1-1" name="q1" value="1"><label for="q1-1" class="rounded-full">1</label>
                         <input type="radio" id="q1-2" name="q1" value="2"><label for="q1-2" class="rounded-full">2</label>
@@ -315,7 +308,7 @@
                     </div>
                 </div>
                 <div class="question">
-                    <p>2. Я використовую ШІ для пошуку та структурування навчальної інформації.</p>
+                    <p>2. Я підбираю AI-інструменти відповідно до дидактичної мети.</p>
                     <div class="rating-scale">
                         <input type="radio" id="q2-1" name="q2" value="1"><label for="q2-1" class="rounded-full">1</label>
                         <input type="radio" id="q2-2" name="q2" value="2"><label for="q2-2" class="rounded-full">2</label>
@@ -325,7 +318,7 @@
                     </div>
                 </div>
                 <div class="question">
-                    <p>3. Я інтегрую інструменти ШІ у створення матеріалів (презентацій, прикладів, вправ).</p>
+                    <p>3. Я можу пояснити одну тему кількома способами й використовую для цього ШІ.</p>
                     <div class="rating-scale">
                         <input type="radio" id="q3-1" name="q3" value="1"><label for="q3-1" class="rounded-full">1</label>
                         <input type="radio" id="q3-2" name="q3" value="2"><label for="q3-2" class="rounded-full">2</label>
@@ -335,7 +328,7 @@
                     </div>
                 </div>
                 <div class="question">
-                    <p>4. Я створюю власні методики або приклади використання ШІ для пояснення складних понять.</p>
+                    <p>4. Я інтегрую ШІ у свої матеріали без втрати предметної глибини.</p>
                     <div class="rating-scale">
                         <input type="radio" id="q4-1" name="q4" value="1"><label for="q4-1" class="rounded-full">1</label>
                         <input type="radio" id="q4-2" name="q4" value="2"><label for="q4-2" class="rounded-full">2</label>
@@ -345,7 +338,7 @@
                     </div>
                 </div>
                 <div class="question">
-                    <p>5. Я критично оцінюю достовірність і якість згенерованої ШІ інформації.</p>
+                    <p>5. Я відчуваю впевненість у поєднанні предметних, педагогічних і технологічних знань.</p>
                     <div class="rating-scale">
                         <input type="radio" id="q5-1" name="q5" value="1"><label for="q5-1" class="rounded-full">1</label>
                         <input type="radio" id="q5-2" name="q5" value="2"><label for="q5-2" class="rounded-full">2</label>
@@ -355,18 +348,18 @@
                     </div>
                 </div>
                 <div class="ai-level">
-                    <p><strong>Ваш рівень AI-зрілості у цій ролі:</strong></p>
-                    <label class="rounded-lg"><input type="radio" name="ai-level-1" value="Ознайомлений"> Ознайомлений(а) з інструментами</label>
-                    <label class="rounded-lg"><input type="radio" name="ai-level-1" value="Системно інтегрую"> Системно інтегрую в практику</label>
+                    <p><strong>Ваш рівень у цій ролі:</strong></p>
+                    <label class="rounded-lg"><input type="radio" name="ai-level-1" value="Ознайомлений"> Ознайомлений з ШІ-інструментами</label>
+                    <label class="rounded-lg"><input type="radio" name="ai-level-1" value="Системно інтегрую"> Системно інтегрую ШІ-інструменти в практику</label>
                     <label class="rounded-lg"><input type="radio" name="ai-level-1" value="Розробляю власні кейси"> Розробляю власні кейси/методики з ШІ</label>
                 </div>
             </div>
 
-            <!-- Блок 2. Ментор (підтримка студентів) -->
+            <!-- Блок 2. Ментор -->
             <div class="block">
-                <h2>Блок 2. Ментор (підтримка студентів)</h2>
+                <h2>Блок 2. Ментор</h2>
                 <div class="question">
-                    <p>1. Я розумію, як ШІ може допомогти в індивідуальній підтримці студентів.</p>
+                    <p>1. Я узгоджую зі студентом очікування й межі використання ШІ.</p>
                     <div class="rating-scale">
                         <input type="radio" id="q6-1" name="q6" value="1"><label for="q6-1" class="rounded-full">1</label>
                         <input type="radio" id="q6-2" name="q6" value="2"><label for="q6-2" class="rounded-full">2</label>
@@ -376,7 +369,7 @@
                     </div>
                 </div>
                 <div class="question">
-                    <p>2. Я використовую ШІ для підготовки індивідуальних матеріалів чи порад.</p>
+                    <p>2. Я використовую ШІ, щоб підготувати персоналізовані поради, але остаточне рішення залишаю за собою.</p>
                     <div class="rating-scale">
                         <input type="radio" id="q7-1" name="q7" value="1"><label for="q7-1" class="rounded-full">1</label>
                         <input type="radio" id="q7-2" name="q7" value="2"><label for="q7-2" class="rounded-full">2</label>
@@ -386,7 +379,7 @@
                     </div>
                 </div>
                 <div class="question">
-                    <p>3. Я інтегрую інструменти ШІ у процес консультування та адаптації завдань.</p>
+                    <p>3. Я допомагаю студенту самостійно визначати цілі та способи їх досягнення.</p>
                     <div class="rating-scale">
                         <input type="radio" id="q8-1" name="q8" value="1"><label for="q8-1" class="rounded-full">1</label>
                         <input type="radio" id="q8-2" name="q8" value="2"><label for="q8-2" class="rounded-full">2</label>
@@ -396,7 +389,7 @@
                     </div>
                 </div>
                 <div class="question">
-                    <p>4. Я розробляю власні стратегії підтримки студентів із використанням ШІ.</p>
+                    <p>4. Я дотримуюся етичності й конфіденційності у використанні ШІ для менторства.</p>
                     <div class="rating-scale">
                         <input type="radio" id="q9-1" name="q9" value="1"><label for="q9-1" class="rounded-full">1</label>
                         <input type="radio" id="q9-2" name="q9" value="2"><label for="q9-2" class="rounded-full">2</label>
@@ -406,7 +399,7 @@
                     </div>
                 </div>
                 <div class="question">
-                    <p>5. Я враховую етичні ризики (академічна доброчесність, чесність студентів) при використанні ШІ.</p>
+                    <p>5. Я регулярно рефлексую та коригую свій стиль наставництва.</p>
                     <div class="rating-scale">
                         <input type="radio" id="q10-1" name="q10" value="1"><label for="q10-1" class="rounded-full">1</label>
                         <input type="radio" id="q10-2" name="q10" value="2"><label for="q10-2" class="rounded-full">2</label>
@@ -416,18 +409,18 @@
                     </div>
                 </div>
                 <div class="ai-level">
-                    <p><strong>Ваш рівень AI-зрілості у цій ролі:</strong></p>
-                    <label class="rounded-lg"><input type="radio" name="ai-level-2" value="Ознайомлений"> Ознайомлений(а) з інструментами</label>
+                    <p><strong>Ваш рівень у цій ролі:</strong></p>
+                    <label class="rounded-lg"><input type="radio" name="ai-level-2" value="Ознайомлений"> Ознайомлений з інструментами</label>
                     <label class="rounded-lg"><input type="radio" name="ai-level-2" value="Системно інтегрую"> Системно інтегрую в практику</label>
                     <label class="rounded-lg"><input type="radio" name="ai-level-2" value="Розробляю власні кейси"> Розробляю власні кейси/методики з ШІ</label>
                 </div>
             </div>
             
-            <!-- Блок 3. Фасилітатор (групове навчання) -->
+            <!-- Блок 3. Фасилітатор -->
             <div class="block">
-                <h2>Блок 3. Фасилітатор (групове навчання)</h2>
+                <h2>Блок 3. Фасилітатор</h2>
                 <div class="question">
-                    <p>1. Я розумію, як ШІ може підтримати групову роботу та обговорення.</p>
+                    <p>1. Я створюю безпечне, інклюзивне середовище для обговорень.</p>
                     <div class="rating-scale">
                         <input type="radio" id="q11-1" name="q11" value="1"><label for="q11-1" class="rounded-full">1</label>
                         <input type="radio" id="q11-2" name="q11" value="2"><label for="q11-2" class="rounded-full">2</label>
@@ -437,7 +430,7 @@
                     </div>
                 </div>
                 <div class="question">
-                    <p>2. Я використовую ШІ для генерації ідей чи запитань, що стимулюють дискусію.</p>
+                    <p>2. Я використовую ШІ для генерації кейсів чи запитань, але сам/сама керую процесом.</p>
                     <div class="rating-scale">
                         <input type="radio" id="q12-1" name="q12" value="1"><label for="q12-1" class="rounded-full">1</label>
                         <input type="radio" id="q12-2" name="q12" value="2"><label for="q12-2" class="rounded-full">2</label>
@@ -447,7 +440,7 @@
                     </div>
                 </div>
                 <div class="question">
-                    <p>3. Я інтегрую інструменти ШІ у створення групових завдань чи проектів.</p>
+                    <p>3. Я допомагаю групі виробляти спільні рішення й домовленості.</p>
                     <div class="rating-scale">
                         <input type="radio" id="q13-1" name="q13" value="1"><label for="q13-1" class="rounded-full">1</label>
                         <input type="radio" id="q13-2" name="q13" value="2"><label for="q13-2" class="rounded-full">2</label>
@@ -457,7 +450,7 @@
                     </div>
                 </div>
                 <div class="question">
-                    <p>4. Я створюю власні вправи для групової роботи з підтримкою ШІ.</p>
+                    <p>4. Я відстежую емоційний клімат у групі та коригую його.</p>
                     <div class="rating-scale">
                         <input type="radio" id="q14-1" name="q14" value="1"><label for="q14-1" class="rounded-full">1</label>
                         <input type="radio" id="q14-2" name="q14" value="2"><label for="q14-2" class="rounded-full">2</label>
@@ -467,7 +460,7 @@
                     </div>
                 </div>
                 <div class="question">
-                    <p>5. Я враховую ризики, пов’язані з нерівним доступом чи різним рівнем володіння ШІ.</p>
+                    <p>5. Я планую роботу групи так, щоб усі мали шанс висловитись.</p>
                     <div class="rating-scale">
                         <input type="radio" id="q15-1" name="q15" value="1"><label for="q15-1" class="rounded-full">1</label>
                         <input type="radio" id="q15-2" name="q15" value="2"><label for="q15-2" class="rounded-full">2</label>
@@ -477,8 +470,8 @@
                     </div>
                 </div>
                 <div class="ai-level">
-                    <p><strong>Ваш рівень AI-зрілості у цій ролі:</strong></p>
-                    <label class="rounded-lg"><input type="radio" name="ai-level-3" value="Ознайомлений"> Ознайомлений(а) з інструментами</label>
+                    <p><strong>Ваш рівень у цій ролі:</strong></p>
+                    <label class="rounded-lg"><input type="radio" name="ai-level-3" value="Ознайомлений"> Ознайомлений з інструментами</label>
                     <label class="rounded-lg"><input type="radio" name="ai-level-3" value="Системно інтегрую"> Системно інтегрую в практику</label>
                     <label class="rounded-lg"><input type="radio" name="ai-level-3" value="Розробляю власні кейси"> Розробляю власні кейси/методики з ШІ</label>
                 </div>
@@ -488,7 +481,7 @@
             <div class="block">
                 <h2>Блок 4. Дизайнер навчального середовища</h2>
                 <div class="question">
-                    <p>1. Я розумію, як ШІ може допомогти у створенні навчальних середовищ.</p>
+                    <p>1. Я аналізую потреби студентів перед вибором AI-інструментів.</p>
                     <div class="rating-scale">
                         <input type="radio" id="q16-1" name="q16" value="1"><label for="q16-1" class="rounded-full">1</label>
                         <input type="radio" id="q16-2" name="q16" value="2"><label for="q16-2" class="rounded-full">2</label>
@@ -498,7 +491,7 @@
                     </div>
                 </div>
                 <div class="question">
-                    <p>2. Я використовую ШІ для підготовки навчальних сценаріїв чи візуалізацій.</p>
+                    <p>2. Я визначаю результати навчання до початку створення матеріалів.</p>
                     <div class="rating-scale">
                         <input type="radio" id="q17-1" name="q17" value="1"><label for="q17-1" class="rounded-full">1</label>
                         <input type="radio" id="q17-2" name="q17" value="2"><label for="q17-2" class="rounded-full">2</label>
@@ -508,7 +501,7 @@
                     </div>
                 </div>
                 <div class="question">
-                    <p>3. Я інтегрую ШІ у розробку інтерактивних курсів чи цифрових платформ.</p>
+                    <p>3. Я використовую ШІ для прототипування матеріалів, але оцінюю їх якість самостійно.</p>
                     <div class="rating-scale">
                         <input type="radio" id="q18-1" name="q18" value="1"><label for="q18-1" class="rounded-full">1</label>
                         <input type="radio" id="q18-2" name="q18" value="2"><label for="q18-2" class="rounded-full">2</label>
@@ -518,7 +511,7 @@
                     </div>
                 </div>
                 <div class="question">
-                    <p>4. Я створюю власні моделі навчального дизайну з використанням ШІ.</p>
+                    <p>4. Я розробляю систему оцінювання ще до створення контенту (backward design).</p>
                     <div class="rating-scale">
                         <input type="radio" id="q19-1" name="q19" value="1"><label for="q19-1" class="rounded-full">1</label>
                         <input type="radio" id="q19-2" name="q19" value="2"><label for="q19-2" class="rounded-full">2</label>
@@ -528,7 +521,7 @@
                     </div>
                 </div>
                 <div class="question">
-                    <p>5. Я критично оцінюю вплив ШІ на навчальний досвід та доступність освіти.</p>
+                    <p>5. Я планую навчальні матеріали так, щоб їх можна було адаптувати під різних студентів.</p>
                     <div class="rating-scale">
                         <input type="radio" id="q20-1" name="q20" value="1"><label for="q20-1" class="rounded-full">1</label>
                         <input type="radio" id="q20-2" name="q20" value="2"><label for="q20-2" class="rounded-full">2</label>
@@ -538,18 +531,18 @@
                     </div>
                 </div>
                 <div class="ai-level">
-                    <p><strong>Ваш рівень AI-зрілості у цій ролі:</strong></p>
-                    <label class="rounded-lg"><input type="radio" name="ai-level-4" value="Ознайомлений"> Ознайомлений(а) з інструментами</label>
+                    <p><strong>Ваш рівень у цій ролі:</strong></p>
+                    <label class="rounded-lg"><input type="radio" name="ai-level-4" value="Ознайомлений"> Ознайомлений з інструментами</label>
                     <label class="rounded-lg"><input type="radio" name="ai-level-4" value="Системно інтегрую"> Системно інтегрую в практику</label>
                     <label class="rounded-lg"><input type="radio" name="ai-level-4" value="Розробляю власні кейси"> Розробляю власні кейси/методики з ШІ</label>
                 </div>
             </div>
 
-            <!-- Блок 5. Новатор (нові траєкторії навчання) -->
+            <!-- Блок 5. Новатор -->
             <div class="block">
-                <h2>Блок 5. Новатор (нові траєкторії навчання)</h2>
+                <h2>Блок 5. Новатор</h2>
                 <div class="question">
-                    <p>1. Я розумію, як ШІ відкриває нові можливості для викладання.</p>
+                    <p>1. Я регулярно тестую нові формати занять або оцінювання.</p>
                     <div class="rating-scale">
                         <input type="radio" id="q21-1" name="q21" value="1"><label for="q21-1" class="rounded-full">1</label>
                         <input type="radio" id="q21-2" name="q21" value="2"><label for="q21-2" class="rounded-full">2</label>
@@ -559,7 +552,7 @@
                     </div>
                 </div>
                 <div class="question">
-                    <p>2. Я використовую ШІ для пошуку нових ідей у навчанні та курсах.</p>
+                    <p>2. Я використовую ШІ для генерації альтернативних траєкторій навчання.</p>
                     <div class="rating-scale">
                         <input type="radio" id="q22-1" name="q22" value="1"><label for="q22-1" class="rounded-full">1</label>
                         <input type="radio" id="q22-2" name="q22" value="2"><label for="q22-2" class="rounded-full">2</label>
@@ -569,7 +562,7 @@
                     </div>
                 </div>
                 <div class="question">
-                    <p>3. Я інтегрую ШІ у тестування нових форматів (симуляції, ігрові підходи тощо).</p>
+                    <p>3. Я збираю дані та відгуки, щоб оцінювати ефективність інновацій.</p>
                     <div class="rating-scale">
                         <input type="radio" id="q23-1" name="q23" value="1"><label for="q23-1" class="rounded-full">1</label>
                         <input type="radio" id="q23-2" name="q23" value="2"><label for="q23-2" class="rounded-full">2</label>
@@ -579,7 +572,7 @@
                     </div>
                 </div>
                 <div class="question">
-                    <p>4. Я розробляю унікальні кейси чи експерименти з використанням ШІ.</p>
+                    <p>4. Я готовий(а) до експериментів і пробую «нестандартні» підходи.</p>
                     <div class="rating-scale">
                         <input type="radio" id="q24-1" name="q24" value="1"><label for="q24-1" class="rounded-full">1</label>
                         <input type="radio" id="q24-2" name="q24" value="2"><label for="q24-2" class="rounded-full">2</label>
@@ -589,18 +582,18 @@
                     </div>
                 </div>
                 <div class="question">
-                    <p>5. Я аналізую ризики інноваційних рішень із ШІ (етика, справедливість, прозорість).</p>
+                    <p>5. Я ділюся власними інноваційними практиками зі спільнотою колег.</p>
                     <div class="rating-scale">
                         <input type="radio" id="q25-1" name="q25" value="1"><label for="q25-1" class="rounded-full">1</label>
                         <input type="radio" id="q25-2" name="q25" value="2"><label for="q25-2" class="rounded-full">2</label>
                         <input type="radio" id="q25-3" name="q25" value="3"><label for="q25-3" class="rounded-full">3</label>
-                        <input type="radio" id="q25-4" name="q25" value="4"><label for="q25-4" class="rounded-full">4</label>
+                        <input type="radio" id="q25-4" name="q24" value="4"><label for="q24-4" class="rounded-full">4</label>
                         <input type="radio" id="q25-5" name="q25" value="5"><label for="q25-5" class="rounded-full">5</label>
                     </div>
                 </div>
                 <div class="ai-level">
-                    <p><strong>Ваш рівень AI-зрілості у цій ролі:</strong></p>
-                    <label class="rounded-lg"><input type="radio" name="ai-level-5" value="Ознайомлений"> Ознайомлений(а) з інструментами</label>
+                    <p><strong>Ваш рівень у цій ролі:</strong></p>
+                    <label class="rounded-lg"><input type="radio" name="ai-level-5" value="Ознайомлений"> Ознайомлений з інструментами</label>
                     <label class="rounded-lg"><input type="radio" name="ai-level-5" value="Системно інтегрую"> Системно інтегрую в практику</label>
                     <label class="rounded-lg"><input type="radio" name="ai-level-5" value="Розробляю власні кейси"> Розробляю власні кейси/методики з ШІ</label>
                 </div>
@@ -667,15 +660,6 @@
             document.getElementById('userIdDisplay').textContent = `Ваш ID: ${currentUserId}`;
         });
 
-        // Мітки для шкали оцінювання
-        const SCALE_LABELS = {
-            '1': 'Не погоджуюся зовсім',
-            '2': 'Частково погоджуюся',
-            '3': 'Погоджуюся',
-            '4': 'Значною мірою погоджуюся', 
-            '5': 'Повністю погоджуюся'
-        };
-
         // Глобальні змінні для зберігання результатів опитувальника
         let quizResults = {
             totalScores: {},
@@ -692,14 +676,6 @@
             const saveBtn = document.getElementById('saveResultsBtn');
             if (saveBtn) {
                 saveBtn.addEventListener('click', calculateAndSaveResults);
-
-                // Оновлення міток шкали для всіх питань
-                document.querySelectorAll('.rating-scale').forEach(scaleDiv => {
-                    scaleDiv.querySelectorAll('label').forEach(label => {
-                        const value = label.getAttribute('for').split('-').pop();
-                        label.textContent = value; // Встановлюємо числове значення як мітку за замовчуванням
-                    });
-                });
             }
         });
         // ========================================================================
@@ -766,7 +742,7 @@
             }
             try {
                 // Using a public collection for all teacher submissions
-                // Примітка: projectId використовується для формування шляху колекції
+                // Примітка: appId має бути вашим Project ID з Firebase Console.
                 const collectionPath = `artifacts/${firebaseConfig.projectId}/public/data/teacher_quiz_results`;
                 const docRef = await db.collection(collectionPath).add({ // Використовуємо db.collection() для compat версії
                     timestamp: new Date().toISOString(),
@@ -806,11 +782,11 @@
 
             // Define the questions for each block
             const blockQuestions = {
-                'Викладач (передача знань)': ['q1', 'q2', 'q3', 'q4', 'q5'],
-                'Ментор (підтримка студентів)': ['q6', 'q7', 'q8', 'q9', 'q10'],
-                'Фасилітатор (групове навчання)': ['q11', 'q12', 'q13', 'q14', 'q15'],
-                'Дизайнер навчального середовища': ['q16', 'q17', 'q18', 'q19', 'q20'],
-                'Новатор (нові траєкторії навчання)': ['q21', 'q22', 'q23', 'q24', 'q25']
+                'Викладач': ['q1', 'q2', 'q3', 'q4', 'q5'],
+                'Ментор': ['q6', 'q7', 'q8', 'q9', 'q10'],
+                'Фасилітатор': ['q11', 'q12', 'q13', 'q14', 'q15'],
+                'Дизайнер': ['q16', 'q17', 'q18', 'q19', 'q20'],
+                'Новатор': ['q21', 'q22', 'q23', 'q24', 'q25']
             };
             
             let allQuestionsAnswered = true;
@@ -847,9 +823,10 @@
             });
 
             if (!allQuestionsAnswered) {
-                showMessage("Будь ласка, дайте відповіді на всі питання та оберіть рівень ШІ у кожному блоці.", "error");
-                document.getElementById('results').classList.add('hidden'); // Ensure results section is hidden if incomplete
-                window.scrollTo(0, 0); // Scroll to top to make message more visible
+                resultsDiv.innerHTML = '<p class="text-red-600 font-semibold">Будь ласка, дайте відповіді на всі питання та оберіть рівень ШІ у кожному блоці перед тим, як отримати результати.</p>';
+                document.getElementById('results').classList.remove('hidden');
+                document.getElementById('results').classList.add('block');
+                window.scrollTo(0, document.body.scrollHeight);
                 return;
             }
             
@@ -912,7 +889,7 @@
 
         async function getGeminiRecommendations() {
             const recommendationsContentDiv = document.getElementById('recommendations-content');
-            const recommendationsSection = document = document.getElementById('recommendations');
+            const recommendationsSection = document.getElementById('recommendations');
             const getRecommendationsBtn = document.getElementById('getRecommendationsBtn');
 
             recommendationsSection.classList.remove('hidden');
@@ -926,18 +903,18 @@
 Моя зона розвитку: ${quizResults.lowestRole} (середній бал: ${quizResults.lowestScore}).
 Мій рівень AI-зрілості для зони розвитку "${quizResults.lowestRole}": ${lowestRoleAILevel}.
 Мої рівні AI-зрілості по всіх ролях:
-Викладач: ${quizResults.aiLevels['Викладач (передача знань)']}
-Ментор: ${quizResults.aiLevels['Ментор (підтримка студентів)']}
-Фасилітатор: ${quizResults.aiLevels['Фасилітатор (групове навчання)']}
-Дизайнер: ${quizResults.aiLevels['Дизайнер навчального середовища']}
-Новатор: ${quizResults.aiLevels['Новатор (нові траєкторії навчання)']}
+Викладач: ${quizResults.aiLevels['Викладач']}
+Ментор: ${quizResults.aiLevels['Ментор']}
+Фасилітатор: ${quizResults.aiLevels['Фасилітатор']}
+Дизайнер: ${quizResults.aiLevels['Дизайнер']}
+Новатор: ${quizResults.aiLevels['Новатор']}
 
 Будь ласка, надайте персоналізовані рекомендації щодо розвитку моєї зони розвитку "${quizResults.lowestRole}", враховуючи мої сильні сторони та мій рівень AI-зрілості саме в цій ролі. Запропонуйте конкретні кроки або ресурси для покращення, а також типи тренінгів, які були б найбільш корисними, виходячи з моєї AI-зрілості в цій ролі. Відповідь має бути розгорнутою, але чіткою та структурованою, використовуючи марковані списки для кроків та ресурсів.`;
 
             let chatHistory = [];
             chatHistory.push({ role: "user", parts: [{ text: prompt }] });
             const payload = { contents: chatHistory };
-            const apiKey = firebaseConfig.apiKey; 
+            const apiKey = firebaseConfig.apiKey; // <-- ВИПРАВЛЕНО: Використовуємо API ключ з firebaseConfig
             const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
 
             try {
@@ -965,8 +942,6 @@
                     window.scrollTo(0, document.body.scrollHeight); // Scroll to recommendations
                 }
             }
-        }
-    </script>
-</body>
-</html>
-
+        </script>
+    </body>
+    </html>
