@@ -633,6 +633,8 @@
 
     <!-- Ваш JavaScript-код -->
     <script>
+        console.log("Скрипт завантажено."); // Debugging: Check if script loads
+
         // Глобальні змінні (заповніть ВАШИМИ ДАНИМИ З FIREBASE CONSOLE)
         const firebaseConfig = {
             apiKey: "AIzaSyD_Bup-l5om_iKApapwK2heV7nPSad_aqQ", // <-- ПЕРЕКОНАЙТЕСЬ, ЩО ЦЕ ВАШ АКТУАЛЬНИЙ КЛЮЧ
@@ -689,9 +691,11 @@
         // ========================================================================
         // >>> СЛУХАЧ ПОДІЙ ДЛЯ КНОПКИ <<<
         document.addEventListener('DOMContentLoaded', () => {
+            console.log("DOMContentLoaded спрацював."); // Debugging: Check if DOM is ready
             const saveBtn = document.getElementById('saveResultsBtn');
             if (saveBtn) {
                 saveBtn.addEventListener('click', calculateAndSaveResults);
+                console.log("Обробник подій для кнопки 'Отримати та зберегти результати' додано."); // Debugging: Check if event listener is added
 
                 // Оновлення міток шкали для всіх питань
                 document.querySelectorAll('.rating-scale').forEach(scaleDiv => {
@@ -700,6 +704,8 @@
                         label.textContent = value; // Встановлюємо числове значення як мітку за замовчуванням
                     });
                 });
+            } else {
+                console.error("Кнопка 'saveResultsBtn' не знайдена в DOM."); // Debugging: Check if button exists
             }
         });
         // ========================================================================
@@ -785,6 +791,8 @@
          * Calculates quiz results and optionally saves them.
          */
         async function calculateAndSaveResults() {
+            console.log('Кнопка "Отримати та зберегти результати" була натиснута!'); // Debugging: Confirms button click
+
             const resultsDiv = document.getElementById('results-content');
             const recommendationsBtn = document.getElementById('getRecommendationsBtn');
             const recommendationsSection = document.getElementById('recommendations');
@@ -1004,4 +1012,3 @@
     </script>
 </body>
 </html>
-
